@@ -1,7 +1,3 @@
-import java.text.AttributedString;
-
-import javax.naming.StringRefAddr;
-
 /**
  * @author Brithanny Arguello, Steven Chacón y Jorge Gonzales
  */
