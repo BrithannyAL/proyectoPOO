@@ -7,7 +7,7 @@ public class VirtualSincronico extends Cursos {
     /**
      * Atributos
      */
-    private String[] dias;      //Días en que se recibe el curso
+    private String[] dias;      //Lista de días en que se recibe el curso
     private String horaInicio;  //Hora de incio de las clases
     private String horaFinal;   //Hora de fin de las clases
     private String plataforma;  //Plataforma usada para recibir las clases
@@ -32,7 +32,55 @@ public class VirtualSincronico extends Cursos {
         this.horaInicio = hIn;
         this.horaFinal = hFn;
         this.plataforma = pla;
-        //TODO Auto-generated constructor stub
     }
-    
+    /**
+     * Devuelve una lista con los días en los que se imparte el curso
+     * @return dias (String[])
+     */
+    public String[] getDias() {
+        return dias;
+    }
+    /**
+     * Permite asignarle a un curso la lista de días en los que se impartirá
+     * @param dias (String[])
+     */
+    public void setDias(String[] dias) {
+        this.dias = dias;
+    }
+    /**
+     * Devuelve la hora en la que inicia el curso
+     * @return horaInicio (String)
+     */
+    public String getHoraInicio() {
+        return horaInicio;
+    }
+    /**
+     * Permite asignarle a un curso la hora de inicio de las lecciones
+     * @param horaInicio (String)
+     */
+    public void setHoraInicio(String horaInicio) {
+        this.horaInicio = horaInicio;
+    }
+    /**
+     * Devuelve la hora en que acaban las lecciones de un curso
+     * @return horaFinal (String)
+     */
+    public String getHoraFinal() {
+        return horaFinal;
+    }
+    /**
+     * 
+     * @param horaFinal
+     */
+    public void setHoraFinal(String horaFinal) {
+        this.horaFinal = horaFinal;
+    }
+
+    public String getPlataforma() {
+        return plataforma;
+    }
+
+    public void setPlataforma(String plataforma) {
+        this.plataforma = plataforma;
+    }
 }
