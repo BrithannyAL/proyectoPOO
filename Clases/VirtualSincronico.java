@@ -69,17 +69,23 @@ public class VirtualSincronico extends Cursos {
         return horaFinal;
     }
     /**
-     * 
-     * @param horaFinal
+     * Permite asignarle a un curso la hora en que acaban las lecciones
+     * @param horaFinal (String)
      */
     public void setHoraFinal(String horaFinal) {
         this.horaFinal = horaFinal;
     }
-
+    /**
+     * Devuelve el nombre la plataforma en donde se imparte el curso
+     * @return plataforma (String)
+     */
     public String getPlataforma() {
         return plataforma;
     }
-
+    /**
+     * Permite asignarle a un curso la plataforma en donde se impartirán las clases
+     * @param plataforma (String)
+     */
     public void setPlataforma(String plataforma) {
         this.plataforma = plataforma;
     }
