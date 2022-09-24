@@ -58,4 +58,16 @@ public class Acompañamientos {
     public void setNotaDescriptiva(String notaDescriptiva) {
         this.notaDescriptiva = notaDescriptiva;
     }
+
+    public void registroDeTiempoAdicionalEnEvaluaciones(){
+
+    }
+
+    public void adecuacionDeEvaluaciones(){
+
+    }
+
+    public void reporteDeIncidencia(){
+        
+    }
 }
