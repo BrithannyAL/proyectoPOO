@@ -1,6 +1,7 @@
 /**
  * Bibliotecas externas
  */
+import java.sql.Date;
 import java.util.ArrayList;
 /**
  * Clase que describe el usuario de tipo coordinador y sus respectivas funciones (comportamientos)
@@ -14,11 +15,11 @@ public class Coordinador extends Usuarios {
     private ArrayList<Coordinador> coordinadores;   //Lista de usuarios de tipo coordinador
     /**
      * Constructor de la clase que se hereda de Usuarios
-     * @param nom (String)
-     * @param tel (String[])
-     * @param cor (String)
-     * @param usu (String)
-     * @param con (String)
+     * @param nom (String) nombre completo
+     * @param tel (String[]) lista de telefonos
+     * @param cor (String) correo
+     * @param usu (String) usuario
+     * @param con (String) contraseña
      */
     public Coordinador(String nom, String[] tel, String cor, String usu, String con) {
         super(nom, tel, cor, usu, con);
@@ -32,27 +33,27 @@ public class Coordinador extends Usuarios {
     }
     /**
      * Método que permite agregar un nuevo cordinador a la lista de usuarios coordinadores de la clase.
-     * @param nom (String)
-     * @param tel (String[])
-     * @param cor (String)
-     * @param usu (String)
-     * @param con (String)
+     * @param nom (String) nombre completo
+     * @param tel (String[]) lista de telefonos
+     * @param cor (String) correo
+     * @param usu (String) usuario
+     * @param con (String) contraseña
      */
     public void crearUsuarioCoordinador(String nom, String[] tel, String cor, String usu, String con) {
-        Coordinador nuevo = new Coordinador(nom, tel, cor, usu, con);
-        this.coordinadores.add(nuevo);
+        this.coordinadores.add(new Coordinador(nom, tel, cor, usu, con));
     }
-    /**
-     * Método que permite agregar un nuevo usuario de tipo profesor a la lista de la clase profesor.
-     * Solo el usuario de tipo coordinador puede agregar un profesor a la lista.
-     * @param nom (String)
-     * @param tel (String[])
-     * @param cor (String)
-     * @param usu (String)
-     * @param con (String)
-     */
-    public void crearUsuarioProfesor(String nom, String[] tel, String cor, String usu, String con) {
-        Profesor nuevoProfesor = new Profesor(nom, tel, cor, usu, con);
-        nuevoProfesor.setProfesores(nuevoProfesor);
+   
+    public Profesor crearUsuarioProfesor(
+        Profesor listaProfesores, String nom, String[] tel, String cor, String usu, String con
+        ) {
+        listaProfesores.setProfesores(nom, tel, cor, usu, con);
+        return listaProfesores;
+    }
+   
+    public Estudiantes registrarEstudiantes(
+        Estudiantes listaEstudiantes, String nom, Date nac, String car, short edad, boolean gen, String lPro
+        ) {
+        listaEstudiantes.setEstudiantes(nom, car, nac, edad, gen, lPro);
+        return listaEstudiantes;
     }
 }

@@ -2,6 +2,7 @@
  * Bibliotecas externas
  */
 import java.sql.Date;
+import java.util.ArrayList;
 /**
  * Clase que describe a los estudiantes que se registran en el sistema para la gestón de registros académicos del TEC
  * @author Brithanny Arguello, Steven Chacón, Jorge Gonzales
@@ -10,22 +11,23 @@ public class Estudiantes {
     /**
      * Atributos
      */
-    private String nombre;              //Nombre completo del estudiante
-    private short carnet;               //Número de carnet del estudiante
-    private Date nacimiento;            //Fecha de nacimiento del estudiante
-    private short edad;                 //Edad del estudiante
-    private boolean genero;             //Genero del estudiante (true/femenino y false/masculino)
-    private String lugarProcedencia;    //Lugar donde vive el estudiante
+    private String nombre;                      //Nombre completo del estudiante
+    private String carnet;                       //Número de carnet del estudiante
+    private Date nacimiento;                    //Fecha de nacimiento del estudiante
+    private short edad;                         //Edad del estudiante
+    private boolean genero;                     //Genero del estudiante (true/femenino y false/masculino)
+    private String lugarProcedencia;            //Lugar donde vive el estudiante
+    private ArrayList<Estudiantes> estudiantes; //Lista de estudiantes registrados en el sistema
     /**
      * Contructor de la clase estudiantes
-     * @param nom (String)
-     * @param car (short)
-     * @param nac (Date)
-     * @param edad (short)
-     * @param gen (boolean)
-     * @param lPro (String)
+     * @param nom (String) nombre completo
+     * @param car (String) carnet estudiantil
+     * @param nac (Date) fecha de nacimiento
+     * @param edad (short) edad
+     * @param gen (boolean) género
+     * @param lPro (String) Lugar de procedencia
      */
-    public Estudiantes(String nom, short car, Date nac, short edad, boolean gen, String lPro) {
+    public Estudiantes(String nom, String car, Date nac, short edad, boolean gen, String lPro) {
         this.nombre = nom;
         this.carnet = car;
         this.nacimiento = nac;
@@ -49,16 +51,16 @@ public class Estudiantes {
     }
     /**
      * Obtiene el carnet del estudiante
-     * @return carnet (short)
+     * @return carnet (String)
      */
-    public short getCarnet() {
+    public String getCarnet() {
         return carnet;
     }
     /**
      * Permite asignarle el carnet correspondiente al estudiante
-     * @param carnet (short)
+     * @param carnet (String)
      */
-    public void setCarnet(short carnet) {
+    public void setCarnet(String carnet) {
         this.carnet = carnet;
     }
     /**
@@ -129,5 +131,24 @@ public class Estudiantes {
      */
     public void setLugarProcedencia(String lugarProcedencia) {
         this.lugarProcedencia = lugarProcedencia;
+    }
+    /**
+     * Devuelve la lista de los estudiantes de la clase Estudiantes registrados en el sistema.
+     * @return (ArrayList<Estudiantes>)
+     */
+    public ArrayList<Estudiantes> getEstudiantes() {
+        return estudiantes;
+    }
+    /**
+     * Permite agregar nuevos estudiantes a la lista de estudiantes de la clase
+     * @param nom (String) nombre completo
+     * @param car (String) carnet estudiantil
+     * @param nac (Date) fecha de nacimiento
+     * @param edad (short) edad
+     * @param gen (boolean) género
+     * @param lPro (String) Lugar de procedencia
+     */
+    public void setEstudiantes(String nom, String car, Date nac, short edad, boolean gen, String lPro) {
+        this.estudiantes.add(new Estudiantes(nom, car, nac, edad, gen, lPro));
     }
 }
