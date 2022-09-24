@@ -1,8 +1,7 @@
 /**
  * Bibliotecas externas
  */
-import java.sql.Date;
-import java.util.ArrayList;
+import java.util.Date;
 /**
  * Clase que describe a los estudiantes que se registran en el sistema para la gestón de registros académicos del TEC
  * @author Brithanny Arguello, Steven Chacón, Jorge Gonzales
@@ -26,7 +25,7 @@ public class Estudiantes {
      * @param gen (boolean) género
      * @param lPro (String) Lugar de procedencia
      */
-    public Estudiantes(String nom, String car, Date nac, Short edad, boolean gen, String lPro) {
+    public Estudiantes(String nom, String car, Date nac, short edad, boolean gen, String lPro) {
         this.nombre = nom;
         this.carnet = car;
         this.nacimiento = nac;
