@@ -1,3 +1,4 @@
+import java.sql.Date;
 import java.util.ArrayList;
 
 /**
@@ -8,13 +9,14 @@ public class Main {
 
         /* CARGAR DATOS DE ESTUDIANTES */
         ArrayList<Estudiantes> listaEstudiantes;
+
         listaEstudiantes.add(new Estudiantes(
             "Veronica",
             "2022888888",
-            "poner aca fecha",
+            new Date(2003, 06, 15),
             19,
             true,
-            "Santa Rosa de Pocosol"));
+            "San Hueco"));
         
     }
 }
