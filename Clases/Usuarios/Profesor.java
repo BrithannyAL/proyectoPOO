@@ -12,11 +12,11 @@ public class Profesor extends Usuarios {
     private ArrayList<Profesor> profesores;
     /**
      * Constructor de la clase que se hereda de Usuarios
-     * @param nom (String)
-     * @param tel (String[])
-     * @param cor (String)
-     * @param usu (String)
-     * @param con (String)
+     * @param nom (String) nombre completo del profesor
+     * @param tel (String[]) lista de telefonos
+     * @param cor (String) correo
+     * @param usu (String) usuario
+     * @param con (String) contraseña
      */
     public Profesor(String nom, String[] tel, String cor, String usu, String con) {
         super(nom, tel, cor, usu, con);
@@ -29,10 +29,14 @@ public class Profesor extends Usuarios {
         return profesores;
     }
     /**
-     * Permite agregar un nuevo profesor a la lista de profesores registrados
-     * @param prof (Profesor)
+     * Permite agregar un nuevo usuario de tipo profesor a la lista de profesores de la clase
+     * @param nom (String) nombre completo del profesor
+     * @param tel (String[]) lista de telefonos
+     * @param cor (String) correo
+     * @param usu (String) usuario
+     * @param con (String) contraseña
      */
-    public void setProfesores(Profesor prof) {
-        this.profesores.add(prof);
+    public void setProfesores(String nom, String[] tel, String cor, String usu, String con) {
+        this.profesores.add(new Profesor(nom, tel, cor, usu, con));
     }
 }
