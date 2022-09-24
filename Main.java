@@ -14,7 +14,7 @@ public class Main {
             "Veronica",
             "2022888888",
             new Date(2003, 06, 15),
-            19,
+            (short)19,
             true,
             "San Hueco"));
         
