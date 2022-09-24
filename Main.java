@@ -4,7 +4,6 @@ import java.util.Date;
  */
 public class Main {
     public static void main(String[] args) {
-
         /* CARGAR DATOS DE ESTUDIANTES */
         Estudiantes [] listaEstudiantes = new Estudiantes[10];
         listaEstudiantes[0] = new Estudiantes(
