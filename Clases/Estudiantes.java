@@ -17,17 +17,16 @@ public class Estudiantes {
     private short edad;                         //Edad del estudiante
     private boolean genero;                     //Genero del estudiante (true/femenino y false/masculino)
     private String lugarProcedencia;            //Lugar donde vive el estudiante
-    private ArrayList<Estudiantes> estudiantes; //Lista de estudiantes registrados en el sistema
     /**
      * Contructor de la clase estudiantes
      * @param nom (String) nombre completo
      * @param car (String) carnet estudiantil
-     * @param nac (Date) fecha de nacimiento
+     * @param string (Date) fecha de nacimiento
      * @param edad (short) edad
      * @param gen (boolean) género
      * @param lPro (String) Lugar de procedencia
      */
-    public Estudiantes(String nom, String car, Date nac, short edad, boolean gen, String lPro) {
+    public Estudiantes(String nom, String car, Date nac, Short edad, boolean gen, String lPro) {
         this.nombre = nom;
         this.carnet = car;
         this.nacimiento = nac;
@@ -131,24 +130,5 @@ public class Estudiantes {
      */
     public void setLugarProcedencia(String lugarProcedencia) {
         this.lugarProcedencia = lugarProcedencia;
-    }
-    /**
-     * Devuelve la lista de los estudiantes de la clase Estudiantes registrados en el sistema.
-     * @return (ArrayList<Estudiantes>)
-     */
-    public ArrayList<Estudiantes> getEstudiantes() {
-        return estudiantes;
-    }
-    /**
-     * Permite agregar nuevos estudiantes a la lista de estudiantes de la clase
-     * @param nom (String) nombre completo
-     * @param car (String) carnet estudiantil
-     * @param nac (Date) fecha de nacimiento
-     * @param edad (short) edad
-     * @param gen (boolean) género
-     * @param lPro (String) Lugar de procedencia
-     */
-    public void setEstudiantes(String nom, String car, Date nac, short edad, boolean gen, String lPro) {
-        this.estudiantes.add(new Estudiantes(nom, car, nac, edad, gen, lPro));
     }
 }
