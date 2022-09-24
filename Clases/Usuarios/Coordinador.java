@@ -1,5 +1,7 @@
+/**
+ * Bibliotecas externas
+ */
 import java.util.ArrayList;
-
 /**
  * Clase que describe el usuario de tipo coordinador y sus respectivas funciones (comportamientos)
  * Clase que hereda la clase Usuarios

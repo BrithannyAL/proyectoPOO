@@ -1,19 +1,26 @@
+/**
+ * Bibliotecas externas
+ */
 import java.sql.Date;
 import java.util.ArrayList;  
-
+/**
+ * 
+ * @author Brithanny Arguello, Steven Chacón y Jorge Gonzáles
+ */
 public class Acompañamientos {
-    private Date fecha; //Fecha en la que se realiza el acompanamiento
-    private String tipoReporte; //Tipo de reporte realizado
+    /**
+     * Atrinbutos
+     */
+    private Date fecha;                         //Fecha en la que se realiza el acompanamiento
+    private String tipoReporte;                 //Tipo de reporte realizado
     private ArrayList<Estudiantes> estudiantes; // Estudiantes que usaron el acompanamiento
-    private String notaDescriptiva; //Nota que describe el acompanamiento
-
-        /**
+    private String notaDescriptiva;             //Nota que describe el acompanamiento
+    /**
      * Contructor de la clase grupo
      * @param f (Date)
      * @param tr (String)
      * @param nd (String)
      */
-
     public Acompañamientos(Date f, String tr, String nd) {
         this.fecha = f;
         this.tipoReporte = tr;
@@ -51,5 +58,4 @@ public class Acompañamientos {
     public void setNotaDescriptiva(String notaDescriptiva) {
         this.notaDescriptiva = notaDescriptiva;
     }
-
 }
