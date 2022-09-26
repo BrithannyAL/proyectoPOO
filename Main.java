@@ -2,6 +2,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner; //Agregar esto luego a la bibliografía
+import java.io.Console;
 /**
  * @author Brithanny Arguello, Steven Chacón y Jorge Gonzales
  */
@@ -28,18 +29,54 @@ public class Main {
         //CARGAR COORDINADORES
         ArrayList<Coordinador> listaCoordinador  = new ArrayList<>();
 
-        new Coordinador("A" , new String[] {"123", "456"}, "a@", "a", "123");
-        listaCoordinador.add(new Coordinador("B" , new String[] {"123", "456"}, "a@", "b", "123"));
+        listaCoordinador.add(new Coordinador("A" , new String[] {"123", "456"}, "a@", "a", "123"));
+        listaCoordinador.add(new Coordinador("B" , new String[] {"123", "456"}, "b@", "b", "123"));
+        listaCoordinador.add(new Coordinador("C" , new String[] {"123", "456"}, "c@", "c", "123"));
 
-        System.out.println("Bienvenido al sistema!" + 
-        "\n Ingrese su nombre de usuario: ");
-        userName = myObj.nextLine(); 
-        System.out.println("Ingrese su contraseña: ");
-        pass = myObj.nextLine();   
+        
+        
+        System.out.println("----------------------------------------------------------------------");
+        System.out.println("||                  Bienvenido al sistema!                          ||");
+        System.out.println("||         Ingrese 1 si desea ingresar como coordinador             ||");
+        System.out.println("||         Ingrese 2 si desea ingresar como profesor                ||");
+        System.out.println("----------------------------------------------------------------------");
+        
+        Console console = System.console();
+        String cOp = console.readLine("%s", "                       Ingrese su opcion: ");
 
-        if(Coordinador.validadCoordinador(listaCoordinador,userName,pass) == true){
-            
+        if(cOp.equals("1")){
+            System.out.println("Ingrese su nombre de usuario: ");
+            userName = myObj.nextLine(); 
+            System.out.println("Ingrese su contraseña: ");
+            pass = myObj.nextLine();   
+    
+            if(Coordinador.validadCoordinador(listaCoordinador,userName,pass) == true){
+                
+                System.out.println("======================================================================");
+                System.out.println("||            Bienvenido al menú de coordinadores!                  ||");
+                System.out.println("||         [1] Para crear un usuario                                ||");
+                System.out.println("||         [2] Para editar un usuario                               ||");
+                System.out.println("||         [3] Para agregar un curso                                ||");
+                System.out.println("||         [4] Para editar un curso                                 ||");
+                System.out.println("||         [5] Para crear un grupo                                  ||");
+                System.out.println("||         [6] Para editar un grupo                                 ||");
+                System.out.println("||         [7] Para asociar un estudiante a un curso                ||");
+                System.out.println("======================================================================");
+
+                String opCord = console.readLine("%s", "Digite el número de opcion que desea realizar: ");
+            }
+            else{System.out.println("No");
+            }
+
         }
+
+
+
+
+
+
+
+
 
 
     } 

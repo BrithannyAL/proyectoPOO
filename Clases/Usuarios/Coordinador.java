@@ -20,7 +20,7 @@ public class Coordinador extends Usuarios {
 
     public static boolean validadCoordinador(ArrayList<Coordinador> listaCoordinador,String username,String pass){
         for(Coordinador c: listaCoordinador){
-            if((c.getUsuario() == username) && (c.getContrasenia() == pass)){
+            if((c.getUsuario().equals(username)) && (c.getContrasenia().equals(pass))){
                 return true;
             }
         }
