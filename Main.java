@@ -26,15 +26,20 @@ public class Main {
             (short) 19,true,"CQ"));
 
         //CARGAR COORDINADORES
-        Arraylist<Coordinador> listaCoordinador  = new ArrayList<>();
+        ArrayList<Coordinador> listaCoordinador  = new ArrayList<>();
 
-        new Coordinador("A", "s", "a@", "a", "123");
+        new Coordinador("A" , new String[] {"123", "456"}, "a@", "a", "123");
+        listaCoordinador.add(new Coordinador("B" , new String[] {"123", "456"}, "a@", "b", "123"));
 
         System.out.println("Bienvenido al sistema!" + 
         "\n Ingrese su nombre de usuario: ");
         userName = myObj.nextLine(); 
         System.out.println("Ingrese su contraseña: ");
         pass = myObj.nextLine();   
+
+        if(Coordinador.validadCoordinador(listaCoordinador,userName,pass) == true){
+            
+        }
 
 
     } 

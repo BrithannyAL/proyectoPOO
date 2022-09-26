@@ -98,8 +98,4 @@ abstract public class Usuarios {
         this.contrasenia = contrasenia;
     }
 
-    void buscarUsuario(Usuarios username, Usuarios pass){
-
-
-    }
 }
