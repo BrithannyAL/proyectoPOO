@@ -33,6 +33,12 @@ public class Main {
         listaCoordinador.add(new Coordinador("B" , new String[] {"123", "456"}, "b@", "b", "123"));
         listaCoordinador.add(new Coordinador("C" , new String[] {"123", "456"}, "c@", "c", "123"));
 
+        ArrayList<Profesor> listaProfesor = new ArrayList<>();
+
+        listaProfesor.add(new Profesor("D" , new String[] {"123", "456"}, "D@", "d", "123"));
+        listaProfesor.add(new Profesor("E" , new String[] {"123", "456"}, "E@", "e", "123"));
+        listaProfesor.add(new Profesor("F" , new String[] {"123", "456"}, "F@", "f", "123"));
+
         
         
         System.out.println("----------------------------------------------------------------------");
@@ -65,10 +71,23 @@ public class Main {
 
                 String opCord = console.readLine("%s", "Digite el número de opcion que desea realizar: ");
             }
-            else{System.out.println("No");
+            }else if(cOp.equals("2")){
+                System.out.println("Ingrese su nombre de usuario: ");
+                userName = myObj.nextLine(); 
+                System.out.println("Ingrese su contraseña: ");
+                pass = myObj.nextLine();   
+
+                if(Profesor.validarProfesor(listaProfesor,userName,pass) == true){
+                    System.out.println("======================================================================");
+                    System.out.println("||            Bienvenido al menú de profesores!                     ||");
+                    System.out.println("||              [1] Para asignar una tutoria                        ||");
+                    System.out.println("||              [2] Para agregar una tutoria                        ||");
+                    System.out.println("======================================================================");
+                }
+            
             }
 
-        }
+        
 
 
 
