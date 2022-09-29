@@ -15,4 +15,8 @@ public class Coordinador extends Usuarios {
     public Coordinador(String nom, String[] tel, String cor, String usu, String con) {
         super(nom, tel, cor, usu, con);
     }
+
+    public void crearCoordinador() {
+
+    }
 }
