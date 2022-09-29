@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * Clase que describe el usuario de tipo coordinador y sus respectivas funciones (comportamientos)
  * Clase que hereda la clase Usuarios
@@ -16,7 +18,12 @@ public class Coordinador extends Usuarios {
         super(nom, tel, cor, usu, con);
     }
 
-    public void crearCoordinador() {
-
+    public static boolean validadCoordinador(ArrayList<Coordinador> listaCoordinador,String username,String pass){
+        for(Coordinador c: listaCoordinador){
+            if((c.getUsuario().equals(username)) && (c.getContrasenia().equals(pass))){
+                return true;
+            }
+        }
+        return false;
     }
 }

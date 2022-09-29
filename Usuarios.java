@@ -97,4 +97,5 @@ abstract public class Usuarios {
     public void setContrasenia(String contrasenia) {
         this.contrasenia = contrasenia;
     }
+
 }
