@@ -60,27 +60,28 @@ public class Grupos {
     public void setProfesor(Profesor profesor) {
         this.profesor = profesor;
     }
-
+    //Devuelve la fecha de inicio del grupo
     public Date getFecha_inicio() {
         return fecha_inicio;
     }
-
+    //Permite asignar o cambiar la fecha de inicio
     public void setFecha_inicio(Date fecha_inicio) {
         this.fecha_inicio = fecha_inicio;
     }
-
+    //Obtiene la fecha final
     public Date getFecha_final() {
         return fecha_final;
     }
-
+    //Permite modificar o asignar una fecha final
     public void setFecha_final(Date fecha_final) {
         this.fecha_final = fecha_final;
     }
-
+    //Obtiene el o los numeros de grupo(s)
     public short getNumeroGrupo() {
         return numeroGrupo;
     }
 
+    //Permite asignar o modificar el numero de un grupo
     public void setNumeroGrupo(short numeroGrupo) {
         this.numeroGrupo = numeroGrupo;
     }

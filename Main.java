@@ -41,16 +41,16 @@ public class Main {
         listaProfesor.add(new Profesor("F", new String[] { "123", "456" }, "F@", "f", "123"));
 
         //Procedimiento para iniciar sesión.
-        byte opcion = Byte.parseByte(primerMenu());
-        String datos[] = obtenerUsuarioContra();
+        byte opcion = Byte.parseByte(primerMenu());  //Carga el menu en el que se selecciona el tipo de usuario a logear
+        String datos[] = obtenerUsuarioContra(); //Llama a la funcion para pedir el usuario y la contrasena
 
-        if (opcion == 1) {
+        if (opcion == 1) {  //Si el usuario es un coordinador entra a este if y valida sus credenciales
             if (Coordinador.validadCoordinador(listaCoordinador, datos[0], datos[1]) == true) {
                 menuDeCordinadores();
             } else {
                 System.out.println("ATENCIÓN: USUARIO NO ENCONTRADO");
             }
-        } else if (opcion == 1) {
+        } else if (opcion == 2) { //Si el usuario es profesor entra a este if y valida sus credenciales
             if (Profesor.validarProfesor(listaProfesor, datos[0], datos[1]) == true) {
                 menuDeProfesores();
             } else {
@@ -59,7 +59,7 @@ public class Main {
         }
     }
 
-    public static String primerMenu() {
+    public static String primerMenu() {  //Menu de login en el que se valida si un usuario es profesor o coordinador
         System.out.println("----------------------------------------------------------------------");
         System.out.println("||                  Bienvenido al sistema!                          ||");
         System.out.println("||         Ingrese 1 si desea ingresar como coordinador             ||");
@@ -70,7 +70,7 @@ public class Main {
         return console.readLine("Número del tipo de usuario con el que va a ingresar: ");
     }
 
-    public static void menuDeCordinadores() {
+    public static void menuDeCordinadores() { //Menu con las opciones de un coordinador
         System.out.println("======================================================================");
         System.out.println("||            Bienvenido al menú de coordinadores!                  ||");
         System.out.println("||         [1] Para crear un usuario                                ||");
@@ -83,7 +83,7 @@ public class Main {
         System.out.println("======================================================================");
     }
 
-    public static void menuDeProfesores() {
+    public static void menuDeProfesores() { //Menu con las opciones de un profesor
         System.out.println("======================================================================");
         System.out.println("||            Bienvenido al menú de profesores!                     ||");
         System.out.println("||              [1] Para asignar una tutoria                        ||");
@@ -91,10 +91,12 @@ public class Main {
         System.out.println("======================================================================");
     }
 
-    public static String[] obtenerUsuarioContra() {
+    public static String[] obtenerUsuarioContra() { 
         System.out.println("Escriba su usuario y contraseña");
-        Console console = System.console();
+        Console console = System.console();                                       //Lector de usuario y contrasena para proximamente ser validadas
         String respuesta[] = { console.readLine("Usuario: "), console.readLine("Contraseña: ") };
-        return respuesta;
+        return respuesta; //Se retoran las variables de ususario y contrasena
     }
 }
+
+

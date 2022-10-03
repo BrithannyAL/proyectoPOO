@@ -19,6 +19,7 @@ public class Coordinador extends Usuarios {
         super(nom, tel, cor, usu, con);
     }
 
+    //Funcion para validar las credenciales de un coordinador en base a su usuario y contrasena
     public static boolean validadCoordinador(ArrayList<Coordinador> listaCoordinador,String username,String pass){
         for(Coordinador c: listaCoordinador){
             if((c.getUsuario().equals(username)) && (c.getContrasenia().equals(pass))){

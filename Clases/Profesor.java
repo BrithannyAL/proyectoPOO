@@ -20,7 +20,7 @@ public class Profesor extends Usuarios {
     }
 
 
-
+    //Funcion que valida un profesor segun sus credenciales de usuario y contrasena
     public static boolean validarProfesor(ArrayList<Profesor> listaProfesor,String username,String pass){
         for(Profesor c: listaProfesor){
             if((c.getUsuario().equals(username)) && (c.getContrasenia().equals(pass))){
