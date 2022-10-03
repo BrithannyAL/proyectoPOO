@@ -1,3 +1,4 @@
+package Cursos;
 /**
  * Clase que describe los cursos en modalidad "virtual"
  * Clase heredada de la clase Cursos

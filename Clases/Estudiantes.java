@@ -1,6 +1,7 @@
 /**
  * Bibliotecas externas
  */
+package Clases;
 import java.util.Date;
 /**
  * Clase que describe a los estudiantes que se registran en el sistema para la gestón de registros académicos del TEC

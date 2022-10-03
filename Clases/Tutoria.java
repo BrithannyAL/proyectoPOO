@@ -1,3 +1,4 @@
+package Clases;
 /**
  * Clase que describe las tutorias que se llevaran a cabo en el sistema para la gestón de registros académicos del TEC
  * @author Brithanny Arguello, Steven Chacón, Jorge Gonzales

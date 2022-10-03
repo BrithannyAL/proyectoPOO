@@ -1,3 +1,4 @@
+package Cursos;
 /**
  * Describe los cursos  del sistema para gestión de registros académicos del TEC
  * @author Brithanny Arguello, Stiven Chacón y Jorge Gonzales

@@ -1,3 +1,4 @@
+package Cursos;
 /**
  * Clase que describe los cursos de modalidad Virtual Asincrónico
  * CLase heredada de la clase Cursos
