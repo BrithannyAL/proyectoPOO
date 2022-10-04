@@ -82,7 +82,7 @@ public class Main {
         return console.readLine("Escriba la opción que desea ejecutar: ");
     }
 
-    public static void menuDeProfesores() {
+    public static void menuDeProfesores() { //Menu con las opciones de un profesor
         System.out.println("======================================================================");
         System.out.println("||              Bienvenido al menú de profesores!                   ||");
         System.out.println("||              [1] Para asignar una tutoria                        ||");
@@ -90,11 +90,11 @@ public class Main {
         System.out.println("======================================================================");
     }
 
-    public static String[] obtenerUsuarioContra() {
+    public static String[] obtenerUsuarioContra() { 
         System.out.println("Escriba su usuario y contraseña");
-        Console console = System.console();
+        Console console = System.console();                                       //Lector de usuario y contrasena para proximamente ser validadas
         String respuesta[] = { console.readLine("Usuario: "), console.readLine("Contraseña: ") };
-        return respuesta;
+        return respuesta; //Se retoran las variables de ususario y contrasena
     }
 
     // MÉTODOS Y FUNCIONES QUE CORRESPONDEN AL MENU DE COORDINADOR

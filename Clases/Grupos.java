@@ -28,11 +28,10 @@ public class Grupos {
     /**
      * Contructor de la clase grupo
      * 
-     * @param est (Estudiantes)
-     * @param p   (Profesor)
-     * @param fi  (Date)
-     * @param ff  (Date)
-     * @param ng  (short)
+     * @param p  (Profesor.class): Profesor que le impartirá clases al grupo.
+     * @param fi (Date): Fecha en que los estudiantes inician como grupo.
+     * @param ff (Date): Fecha de final del curso (se deshace el grupo).
+     * @param ng (short): Número de grupo
      */
     public Grupos(Profesor p, Date fi, Date ff, short ng) {
         this.profesor = p;
@@ -77,26 +76,36 @@ public class Grupos {
         this.profesor = profesor;
     }
 
+    /**
+     * Devuelve la fecha de inicio del grupo
+     * 
+     * @return 
+     */
     public Date getFecha_inicio() {
         return fecha_inicio;
     }
 
+    // Permite asignar o cambiar la fecha de inicio
     public void setFecha_inicio(Date fecha_inicio) {
         this.fecha_inicio = fecha_inicio;
     }
 
+    // Obtiene la fecha final
     public Date getFecha_final() {
         return fecha_final;
     }
 
+    // Permite modificar o asignar una fecha final
     public void setFecha_final(Date fecha_final) {
         this.fecha_final = fecha_final;
     }
 
+    // Obtiene el o los numeros de grupo(s)
     public short getNumeroGrupo() {
         return numeroGrupo;
     }
 
+    // Permite asignar o modificar el numero de un grupo
     public void setNumeroGrupo(short numeroGrupo) {
         this.numeroGrupo = numeroGrupo;
     }

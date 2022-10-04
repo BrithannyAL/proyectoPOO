@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import Usuarios.Estudiantes;
 
 /**
+ * Clase que describe los acompañamientos
  * 
  * @author Brithanny Arguello, Steven Chacón y Jorge Gonzáles
  */
@@ -33,46 +34,89 @@ public class Acompañamientos {
         this.notaDescriptiva = nd;
     }
 
+    /**
+     * Obtiene la fecha en que se registra un acompanamiento
+     * 
+     * @return
+     */
     public Date getFecha() {
         return fecha;
     }
 
+    /**
+     * Cambia o modifica la fecha de un acompanamiento
+     * 
+     * @param fecha
+     */
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
 
+    /**
+     * Devuelve el tipo de reporte generado
+     * 
+     * @return
+     */
     public String getTipoReporte() {
         return tipoReporte;
     }
 
+    /**
+     * Permite cambiar o asignar un tipo de reporte
+     * 
+     * @param tipoReporte
+     */
     public void setTipoReporte(String tipoReporte) {
         this.tipoReporte = tipoReporte;
     }
 
+    /**
+     * Obtiene una lista de estudiantes
+     * 
+     * @return
+     */
     public ArrayList<Estudiantes> getEstudiantes() {
         return estudiantes;
     }
 
+    /**
+     * Modifica o asigna una lista de estudiantes
+     * 
+     * @param estudiantes
+     */
     public void setEstudiantes(ArrayList<Estudiantes> estudiantes) {
         this.estudiantes = estudiantes;
     }
 
+    /**
+     * Obtiene la nota descriptiva del acompanamiento
+     * 
+     * @return
+     */
     public String getNotaDescriptiva() {
         return notaDescriptiva;
     }
 
+    /**
+     * Asigna o modifica una nota descriptiva del acompanamiento
+     * 
+     * @param notaDescriptiva
+     */
     public void setNotaDescriptiva(String notaDescriptiva) {
         this.notaDescriptiva = notaDescriptiva;
     }
 
+    // Funcion para crear un registro del tiempo adicional asignado en evaluaciones
     public void registroDeTiempoAdicionalEnEvaluaciones() {
 
     }
 
+    // Funcion para asignar una adecuacion en una evalucacion
     public void adecuacionDeEvaluaciones() {
 
     }
 
+    // Funcion para generar un reporte de incidencia
     public void reporteDeIncidencia() {
 
     }
