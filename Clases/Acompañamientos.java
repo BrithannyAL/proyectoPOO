@@ -1,9 +1,12 @@
 /**
- * Bibliotecas externas
+ * Importaciones externas del archivo.
  */
 package Clases;
+
 import java.sql.Date;
-import java.util.ArrayList;  
+import java.util.ArrayList;
+import Usuarios.Estudiantes;
+
 /**
  * 
  * @author Brithanny Arguello, Steven Chacón y Jorge Gonzáles
@@ -12,13 +15,15 @@ public class Acompañamientos {
     /**
      * Atrinbutos
      */
-    private Date fecha;                         //Fecha en la que se realiza el acompanamiento
-    private String tipoReporte;                 //Tipo de reporte realizado
+    private Date fecha; // Fecha en la que se realiza el acompanamiento
+    private String tipoReporte; // Tipo de reporte realizado
     private ArrayList<Estudiantes> estudiantes; // Estudiantes que usaron el acompanamiento
-    private String notaDescriptiva;             //Nota que describe el acompanamiento
+    private String notaDescriptiva; // Nota que describe el acompanamiento
+
     /**
      * Contructor de la clase grupo
-     * @param f (Date)
+     * 
+     * @param f  (Date)
      * @param tr (String)
      * @param nd (String)
      */
@@ -60,15 +65,15 @@ public class Acompañamientos {
         this.notaDescriptiva = notaDescriptiva;
     }
 
-    public void registroDeTiempoAdicionalEnEvaluaciones(){
+    public void registroDeTiempoAdicionalEnEvaluaciones() {
 
     }
 
-    public void adecuacionDeEvaluaciones(){
+    public void adecuacionDeEvaluaciones() {
 
     }
 
-    public void reporteDeIncidencia(){
-        
+    public void reporteDeIncidencia() {
+
     }
 }
