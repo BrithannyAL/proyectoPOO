@@ -13,15 +13,14 @@ public class Virtual extends Cursos {
     private String[] dias; // Lista de días en las que se imparten los cursos
     private String horaInicio; // Hora de inicio de las clases de los cursos
     private String horaFinal; // Hora final de las clases de los cursos
-    // private String aula; //Aula o salón en donde se imparten las clases
 
     /**
      * Contructor de la clase virtual
      * 
      * @param cod  (String)
      * @param nom  (String)
-     * @param cre  (short)
-     * @param hl   (short)
+     * @param i  (short)
+     * @param j   (short)
      * @param req  (String[])
      * @param cor  (String[])
      * @param dias (String[])
@@ -30,13 +29,12 @@ public class Virtual extends Cursos {
      * @param aula (String)
      */
     public Virtual(
-            String cod, String nom, short cre, short hl, String[] req, String[] cor,
-            String[] dias, String hIn, String hFn, String aula) {
-        super(cod, nom, cre, hl, req, cor);
+            String cod, String nom, int i, int j, String[] req, String[] cor,
+            String[] dias, String hIn, String hFn) {
+        super(cod, nom, i, j, req, cor);
         this.dias = dias;
         this.horaInicio = hIn;
         this.horaFinal = hFn;
-        // this.aula = aula;
     }
 
     /**
@@ -94,14 +92,4 @@ public class Virtual extends Cursos {
     public void setHoraFinal(String horaFinal) {
         this.horaFinal = horaFinal;
     }
-
-    /*
-     * public String getAula() {
-     * return aula;
-     * }
-     * 
-     * public void setAula(String aula) {
-     * this.aula = aula;
-     * }
-     */
 }

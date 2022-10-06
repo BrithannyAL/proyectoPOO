@@ -4,10 +4,9 @@
  */
 import java.util.ArrayList;
 import java.util.Date;
-import Usuarios.Coordinador;
-import Usuarios.Estudiantes;
-import Usuarios.Profesor;
-import Usuarios.Usuarios;
+
+import Cursos.*;
+import Usuarios.*;
 import java.io.Console;
 
 /**
@@ -18,16 +17,16 @@ public class Main {
 
         // CARGAR DATOS DE ESTUDIANTES
         ArrayList<Estudiantes> listaEstudiantes = new ArrayList<>();
-        new Estudiantes("A", "a", new Date(2003, 6, 12), (short) 12, true, "SC");
-        listaEstudiantes.add(new Estudiantes("Veronica", "1", new Date(2003, 4, 12),
+        new Estudiantes("A", "a", new Date(2003 / 6 / 12), (short) 12, true, "SC");
+        listaEstudiantes.add(new Estudiantes("Veronica", "1", new Date(2003 / 4 / 12),
                 (short) 19, true, "Santa Rosa de Pocosol"));
-        listaEstudiantes.add(new Estudiantes("Juan", "2", new Date(2003, 6, 12),
+        listaEstudiantes.add(new Estudiantes("Juan", "2", new Date(2003 / 6 / 12),
                 (short) 19, false, "Santa Clara"));
-        listaEstudiantes.add(new Estudiantes("Pedro", "3", new Date(2003, 3, 5),
+        listaEstudiantes.add(new Estudiantes("Pedro", "3", new Date(2003 / 3 / 5),
                 (short) 19, false, "Fortuna"));
-        listaEstudiantes.add(new Estudiantes("Maria", "4", new Date(2003, 2, 6),
+        listaEstudiantes.add(new Estudiantes("Maria", "4", new Date(2003 / 2 / 6),
                 (short) 19, true, "Florencia"));
-        listaEstudiantes.add(new Estudiantes("Angel", "5", new Date(2003, 7, 23),
+        listaEstudiantes.add(new Estudiantes("Angel", "5", new Date(2003 / 7 / 23),
                 (short) 19, true, "CQ"));
 
         // CARGAR USUARIOS
@@ -38,6 +37,18 @@ public class Main {
         usuarios.add(new Profesor("E", new String[] { "123", "456" }, "E@", "e", "123"));
         usuarios.add(new Coordinador("C", new String[] { "123", "456" }, "c@", "c", "123"));
         usuarios.add(new Profesor("F", new String[] { "123", "456" }, "F@", "f", "123"));
+
+        // CARGAR CURSOS
+        ArrayList<Cursos> cursos = new ArrayList<>();
+        cursos.add(new Virtual(
+                "IC1400", "Fundamentos de organización de computadoras", 3, 4,
+                null, null, new String[] { "Miércoles" }, "1:30pm", "4:05pm"));
+        cursos.add(new VirtualAsincronico(
+                "MA1403", "Matemática discreta", 4, 4,
+                null, null, "TecDigital"));
+        cursos.add(new VirtualSincronico("IC2101", "Programación orientada a objetos", 3, 9,
+                new String[] { "Introducción a la programación", "Taller de programación" },
+                null, new String[] { "Lunes" }, "7:55am", "11.30am", "ZOOM"));
 
         // Procedimiento para iniciar sesión.
         String datos[] = obtenerUsuarioContra();
@@ -53,6 +64,9 @@ public class Main {
                     break;
                 case 2:
                     editarUsuario(usuarios);
+                    break;
+                case 3:
+                    //
                     break;
                 default:
                     System.out.println("ATENCIÓN: La opción que ha digitado es invalida para el menú.");
@@ -82,7 +96,7 @@ public class Main {
         return console.readLine("Escriba la opción que desea ejecutar: ");
     }
 
-    public static void menuDeProfesores() { //Menu con las opciones de un profesor
+    public static void menuDeProfesores() { // Menu con las opciones de un profesor
         System.out.println("======================================================================");
         System.out.println("||              Bienvenido al menú de profesores!                   ||");
         System.out.println("||              [1] Para asignar una tutoria                        ||");
@@ -90,11 +104,11 @@ public class Main {
         System.out.println("======================================================================");
     }
 
-    public static String[] obtenerUsuarioContra() { 
+    public static String[] obtenerUsuarioContra() {
         System.out.println("Escriba su usuario y contraseña");
-        Console console = System.console();                                       //Lector de usuario y contrasena para proximamente ser validadas
+        Console console = System.console(); // Lector de usuario y contrasena para proximamente ser validadas
         String respuesta[] = { console.readLine("Usuario: "), console.readLine("Contraseña: ") };
-        return respuesta; //Se retoran las variables de ususario y contrasena
+        return respuesta; // Se retoran las variables de ususario y contrasena
     }
 
     // MÉTODOS Y FUNCIONES QUE CORRESPONDEN AL MENU DE COORDINADOR
@@ -159,5 +173,62 @@ public class Main {
                 }
             }
         }
+    }
+
+    public static String[] obtenerLista(String elemento) {
+        Console console = System.console();
+        String[] lista = {};
+        boolean inicio = true;
+        int cont = 0;
+        while (inicio) {
+            lista[cont] = console.readLine("Escriba el nombre del " + elemento + ": ");
+            int resp = Integer.parseInt(console.readLine("¿Desea agregar otro? (1. Sí / 2. No)"));
+            if (resp == 2) {
+                inicio = false;
+                break;
+            }
+            cont = +1;
+        }
+        return lista;
+    }
+    /**
+     * Aun hay que terminarlo, NO TOCARLO
+     * @return
+     */
+    public static Cursos agregarCurso() { 
+        System.out.println("1.  Para agragar un curso de modalidad virtual.");
+        System.out.println("2.  Para agragar un curso de modalidad virtual asincrónico.");
+        System.out.println("1.  Para agragar un curso de modalidad virtual sincrónico.");
+        Console console = System.console();
+        int tipoCurso = Integer.parseInt(console.readLine("Tipo de curso que desea agrega: "));
+        System.out.println("----------------------------------------------------------------");
+        System.out.println("Escriba todos los datos necesarios para la creación del curso:");
+        String codigo = console.readLine("Escriba el código del curso: ");
+        String nombre = console.readLine("Escriba el título del curso: ");
+        int creditos = Integer.parseInt(console.readLine("Escriba la cantidad de créditos que vale el curso: "));
+        int horasLectivas = Integer.parseInt(console.readLine("Escriba la cantidad de horas lectivas del curso: "));
+        int req = Integer.parseInt(console.readLine("¿El curso tiene requisitos? (1. Sí / 2. No)"));
+        String[] requisitos = {};
+        if (req == 1)
+            requisitos = obtenerLista("requisito");
+        int cor = Integer.parseInt(console.readLine("¿El curso tiene corequisitos? (1. Sí / 2. No)"));
+        String[] corequisitos = {};
+        if (cor == 1)
+            corequisitos = obtenerLista("correquisito");
+        switch (tipoCurso) {
+            case 1:
+                System.out.println("Agregue los días en los que será impartido el curso");
+                String[] dias = obtenerLista("día");
+                String horaInicial = console.readLine("Hora de inicio: ");
+                String horaFinal = console.readLine("Hora final: ");
+                return new Virtual(
+                    codigo, nombre, creditos, horasLectivas, requisitos, corequisitos, dias, horaInicial, horaFinal);
+                case 2:
+                    break;
+        
+            default:
+                break;
+        }
+        return null;
     }
 }

@@ -1,5 +1,6 @@
 package Cursos;
 
+import java.sql.Time;
 /**
  * Clase que describe los cursos de modalidad "Virtual sincrónico"
  * Clase heredada de clase Cursos
@@ -30,7 +31,7 @@ public class VirtualSincronico extends Cursos {
      * @param pla  (String)
      */
     public VirtualSincronico(
-            String cod, String nom, short cre, short hl, String[] req,
+            String cod, String nom, int cre, int hl, String[] req,
             String[] cor, String[] dias, String hIn, String hFn, String pla) {
         super(cod, nom, cre, hl, req, cor);
         this.dias = dias;
