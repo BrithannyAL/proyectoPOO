@@ -3,9 +3,16 @@
  */
 import java.util.ArrayList;
 import java.util.Date;
+<<<<<<< HEAD
 import Clases.Coordinador;
 import Clases.Estudiantes;
 import Clases.Profesor;
+=======
+import Usuarios.Coordinador;
+import Usuarios.Estudiantes;
+import Usuarios.Profesor;
+import Usuarios.Usuarios;
+>>>>>>> parent of e067b88 (Agregar curso)
 import java.io.Console;
 
 /**
@@ -34,6 +41,7 @@ public class Main {
         listaCoordinador.add(new Coordinador("B", new String[] { "123", "456" }, "b@", "b", "123"));
         listaCoordinador.add(new Coordinador("C", new String[] { "123", "456" }, "c@", "c", "123"));
 
+<<<<<<< HEAD
         // GARGAR PROFESORES
         ArrayList<Profesor> listaProfesor = new ArrayList<>();
         listaProfesor.add(new Profesor("D", new String[] { "123", "456" }, "D@", "d", "123"));
@@ -55,6 +63,26 @@ public class Main {
                 menuDeProfesores();
             } else {
                 System.out.println("ATENCIÓN: USUARIO NO ECNOTRADO");
+=======
+        // Procedimiento para iniciar sesión.
+        String datos[] = obtenerUsuarioContra();
+        byte tipoUsuario = Coordinador.validadUsuario(usuarios, datos[0], datos[1]);
+        if (tipoUsuario == 0) {
+            byte ejecucion = Byte.parseByte(menuDeCordinadores());
+            switch (ejecucion) {
+                case 1:
+                    Usuarios e = crearUsuario();
+                    if (e != null) {
+                        usuarios.add(e);
+                    }
+                    break;
+                case 2:
+                    editarUsuario(usuarios);
+                    break;
+                default:
+                    System.out.println("ATENCIÓN: La opción que ha digitado es invalida para el menú.");
+                    break;
+>>>>>>> parent of e067b88 (Agregar curso)
             }
         }
     }
@@ -101,6 +129,73 @@ public class Main {
         String respuesta[] = { console.readLine("Usuario: "), console.readLine("Contraseña: ") };
         return respuesta; //Se retoran las variables de ususario y contrasena
     }
+<<<<<<< HEAD
+=======
+
+    // MÉTODOS Y FUNCIONES QUE CORRESPONDEN AL MENU DE COORDINADOR
+
+    public static Usuarios crearUsuario() {
+        System.out.println("1. Para crear un usuario coordinador.");
+        System.out.println("2. Para crear un usuario profesor.");
+
+        Console console = System.console();
+        byte tipoUsuario = Byte.parseByte(console.readLine("Número del tipo de usuario a crear: "));
+        System.out.println("=======================================================================");
+        String nombre = console.readLine("Nombre Completo del usuario: ");
+        String telefonos[] = { console.readLine("Teléfono del usuario: ") };
+        String correo = console.readLine("Correo electrónico del usuario: ");
+        String usuario = console.readLine("Nombre de usuario: ");
+        String contrasenia = console.readLine("Contrasena de usuario: ");
+
+        if (tipoUsuario == 1) {
+            return new Coordinador(nombre, telefonos, correo, usuario, contrasenia);
+        } else if (tipoUsuario == 2) {
+            return new Profesor(nombre, telefonos, correo, usuario, contrasenia);
+        } else {
+            System.out.println("ATENCIÓN: La opción es inválida.");
+            return null;
+        }
+    }
+
+    public static void editarUsuario(ArrayList<Usuarios> usuarios) {
+        Console console = System.console();
+        String nombre = console.readLine("Escriba el nombre del usuario que desea editar");
+
+        for (Usuarios u : usuarios) {
+            if (u.getNombre().equals(nombre)) {
+                System.out.println("¿Desea editar el nombre del usuario?");
+                byte opcion = Byte.parseByte(console.readLine("1. SÍ / 2. NO"));
+                if (opcion == 1) {
+                    u.setNombre(console.readLine("Nuevo nombre del usuario: "));
+                }
+
+                System.out.println("¿Desea editar los telefonos del usuario?");
+                opcion = Byte.parseByte(console.readLine("1. SÍ / 2. NO"));
+                if (opcion == 1) {
+                    u.setTelefonos();
+                }
+
+                System.out.println("¿Desea editar el correo del usuario?");
+                opcion = Byte.parseByte(console.readLine("1. SÍ / 2. NO"));
+                if (opcion == 1) {
+                    u.setCorreo(console.readLine("Nuevo correo del usuario: "));
+                }
+
+                System.out.println("¿Desea editar el nombre usuario?");
+                opcion = Byte.parseByte(console.readLine("1. SÍ / 2. NO"));
+                if (opcion == 1) {
+                    u.setUsuario(console.readLine("Nuevo nombre usuario: "));
+                }
+
+                System.out.println("¿Desea editar la contraseña del usuario?");
+                opcion = Byte.parseByte(console.readLine("1. SÍ / 2. NO"));
+                if (opcion == 1) {
+                    u.setContrasenia(console.readLine("Nueva contraseña para el usuario: "));
+                }
+            }
+        }
+    }
+>>>>>>> parent of e067b88 (Agregar curso)
 }
 
 

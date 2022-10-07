@@ -7,6 +7,7 @@ abstract public class Cursos {
     /**
      * Atributos
      */
+<<<<<<< HEAD
     protected String codigo;          //Código del curso
     protected String nombre;          //Nombre del curso
     protected short creditos;         //Cantidad de créditos del curso
@@ -23,6 +24,26 @@ abstract public class Cursos {
      * @param cor (String[])
      */
     public Cursos(String cod, String nom, short cre, short hl, String[] req, String[] cor){
+=======
+    protected String codigo; // Código del curso
+    protected String nombre; // Nombre del curso
+    protected short creditos; // Cantidad de créditos del curso
+    protected short horasLectivas; // Cantidad de horas de clase
+    protected String[] requisitos; // Cursos que se deben aprobar primero
+    protected String[] corequisitos; // Cursos a llevar en el mismo semestre
+
+    /**
+     * Constructutor para la creación de instansias de la clase cursos
+     * 
+     * @param cod (String)
+     * @param nom (String)
+     * @param cre (short)
+     * @param hl  (short)
+     * @param req (String[])
+     * @param cor (String[])
+     */
+    public Cursos(String cod, String nom, short cre, short hl, String[] req, String[] cor) {
+>>>>>>> parent of e067b88 (Agregar curso)
         this.codigo = cod;
         this.nombre = nom;
         this.creditos = cre;

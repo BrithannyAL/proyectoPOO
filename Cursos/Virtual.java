@@ -8,6 +8,7 @@ public class Virtual extends Cursos {
     /**
      * Atributos
      */
+<<<<<<< HEAD
     private String[] dias;      //Lista de días en las que se imparten los cursos
     private String horaInicio;  //Hora de inicio de las clases de los cursos
     private String horaFinal;   //Hora final de las clases de los cursos
@@ -20,19 +21,44 @@ public class Virtual extends Cursos {
      * @param hl (short)
      * @param req (String[])
      * @param cor (String[])
+=======
+    private String[] dias; // Lista de días en las que se imparten los cursos
+    private String horaInicio; // Hora de inicio de las clases de los cursos
+    private String horaFinal; // Hora final de las clases de los cursos
+    // private String aula; //Aula o salón en donde se imparten las clases
+
+    /**
+     * Contructor de la clase virtual
+     * 
+     * @param cod  (String)
+     * @param nom  (String)
+     * @param cre  (short)
+     * @param hl   (short)
+     * @param req  (String[])
+     * @param cor  (String[])
+>>>>>>> parent of e067b88 (Agregar curso)
      * @param dias (String[])
      * @param hIn (String)
      * @param hFn (String)
      * @param aula (String)
      */
     public Virtual(
+<<<<<<< HEAD
     String cod, String nom, short cre, short hl, String[] req, String[] cor,
     String[] dias, String hIn, String hFn, String aula) {
+=======
+            String cod, String nom, short cre, short hl, String[] req, String[] cor,
+            String[] dias, String hIn, String hFn, String aula) {
+>>>>>>> parent of e067b88 (Agregar curso)
         super(cod, nom, cre, hl, req, cor);
         this.dias = dias;
         this.horaInicio = hIn;
         this.horaFinal = hFn;
+<<<<<<< HEAD
         //this.aula = aula;
+=======
+        // this.aula = aula;
+>>>>>>> parent of e067b88 (Agregar curso)
     }
     /**
      * Obtiene la lista de días en los que se imparten los puntos
@@ -77,6 +103,7 @@ public class Virtual extends Cursos {
         this.horaFinal = horaFinal;
     }
 
+<<<<<<< HEAD
     /*public String getAula() {
         return aula;
     }
@@ -84,4 +111,15 @@ public class Virtual extends Cursos {
     public void setAula(String aula) {
         this.aula = aula;
     }*/
+=======
+    /*
+     * public String getAula() {
+     * return aula;
+     * }
+     * 
+     * public void setAula(String aula) {
+     * this.aula = aula;
+     * }
+     */
+>>>>>>> parent of e067b88 (Agregar curso)
 }

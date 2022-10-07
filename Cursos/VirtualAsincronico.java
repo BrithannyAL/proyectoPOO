@@ -19,7 +19,12 @@ public class VirtualAsincronico extends Cursos {
      * @param cor (String[])
      * @param mCom (String)
      */
+<<<<<<< HEAD
     public VirtualAsincronico(String cod, String nom, short cre, short hl, String[] req, String[] cor, String mCom) {
+=======
+    public VirtualAsincronico(
+            String cod, String nom, short cre, short hl, String[] req, String[] cor, String mCom) {
+>>>>>>> parent of e067b88 (Agregar curso)
         super(cod, nom, cre, hl, req, cor);
         this.medioComunicacion = mCom;
     }
