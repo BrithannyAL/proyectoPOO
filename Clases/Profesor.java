@@ -30,4 +30,17 @@ public class Profesor extends Usuarios {
         return false;
     }
 
+        //short Carnet Estudiante, short numero de grupo, string codigo
+    public void asignarCalificacion(short ce, short ng, string c){
+
+
+    } 
+
+    public void agregarTutoria(){
+
+
+
+
+    }
+
 }

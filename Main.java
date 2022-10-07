@@ -89,6 +89,10 @@ public class Main {
         System.out.println("||              [1] Para asignar una tutoria                        ||");
         System.out.println("||              [2] Para agregar una tutoria                        ||");
         System.out.println("======================================================================");
+
+        String semana = console.readLine("Ingrese la semana en la que se realiza la asistencia: ");
+
+        String candidadPersonas = console.readLine("Ingrese la cantidad de personas que asistieron a la tutoría: ");
     }
 
     public static String[] obtenerUsuarioContra() { 
