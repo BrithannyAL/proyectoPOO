@@ -17,7 +17,7 @@ public class Tramites {
     private String descripcion;
     private Date fecha_registro;
     /**
-     * 
+     * Constructor de la clase Tramites
      * @param e (Estudiantes)
      * @param d (descripcion)
      * @param f (fecha de registro)
