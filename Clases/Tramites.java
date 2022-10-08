@@ -5,6 +5,7 @@
  * Bibliotecas externas
  */
 package Clases;
+import Usuarios.*;
 import java.sql.Date;
 
 
