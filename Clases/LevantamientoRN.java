@@ -8,10 +8,18 @@ package Clases;
 import Cursos.Cursos;
 
 public class LevantamientoRN {
+    /**
+    * Atributos
+    */
     private Cursos cursos_asociados;
     private Cursos curso_a_matricular;
     private boolean estado;
-
+    /**
+     * Constructor de la clase LevantamientoRN
+     * @param ca (Curso asociado a levantar)
+     * @param cm (Curso a matricular)
+     * @param e (estado de levantamiento)
+     */
     public LevantamientoRN(Cursos ca, Cursos cm, boolean e){
         this.cursos_asociados = ca;
         this.curso_a_matricular = cm;
