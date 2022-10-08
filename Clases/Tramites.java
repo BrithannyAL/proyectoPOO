@@ -1,4 +1,7 @@
 /**
+ * Clase que describe a los levantamientos de requisitos
+ * Clase heredada de la clase Estudiantes
+ * @author Brithanny Arguello, Steven Chacón y Jorge González
  * Bibliotecas externas
  */
 package Clases;
