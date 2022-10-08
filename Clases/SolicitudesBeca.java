@@ -1,6 +1,5 @@
 /**
  * Clase que describe a los levantamientos de requisitos
- * Clase heredada de la clase Cursos
  * @author Brithanny Arguello, Steven Chacón y Jorge González
  */
 package Clases;
