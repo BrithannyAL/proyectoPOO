@@ -43,6 +43,13 @@ public class Main {
         usuarios.add(new Coordinador("C", new String[] { "123", "456" }, "c@", "c", "123"));
         usuarios.add(new Profesor("F", new String[] { "123", "456" }, "F@", "f", "123"));
 
+        ArrayList<Profesor> listaProfesores = new ArrayList<>();
+        listaProfesores.add(new Profesor("D", new String[] { "123", "456" }, "D@", "d", "123"));
+        listaProfesores.add(new Profesor("E", new String[] { "123", "456" }, "E@", "e", "123"));
+        listaProfesores.add(new Profesor("F", new String[] { "123", "456" }, "F@", "f", "123"));
+
+
+
 
         // CARGAR CURSOS
         ArrayList<Cursos> cursos = new ArrayList<>();
@@ -79,7 +86,7 @@ public class Main {
                     break;
             }
         } else if (tipoUsuario == 1) {
-            menuDeProfesores(listaEstudiantes,p1); 
+            menuDeProfesores(listaEstudiantes,p1,listaProfesores,datos); 
         } else {
             System.out.println("ATENCIÓN: USUARIO NO ENCONTRADO");
         }
@@ -102,8 +109,9 @@ public class Main {
         return console.readLine("Escriba la opción que desea ejecutar: ");
     }
 
-    public static void menuDeProfesores(ArrayList<Estudiantes> listaEstudiantes, Profesor p1) { // Menu con las opciones de un profesor
+    public static void menuDeProfesores(ArrayList<Estudiantes> listaEstudiantes,Profesor p1,ArrayList<Profesor> listaProfesores,String[]datos) { // Menu con las opciones de un profesor
 
+        Profesor profesor = buscarProfesor(listaProfesores, datos);
         
         while(true){
 
@@ -123,6 +131,7 @@ public class Main {
             String e;
             
             
+
             for(Estudiantes lista : listaEstudiantes){
             System.out.println("\nNombre:" + lista.getNombre() + "\nCarnet:"+ lista.getCarnet()); 
                 }
@@ -130,7 +139,8 @@ public class Main {
             e = console.readLine("Ingrese el carnet del estudiante que desea calificar: ");
             n = console.readLine("Ingrese la nota que desea registrar: ");
             
-            //listaEstudiantes.ingresarTutoria();
+            profesor.asignarCalificacion(e,n,profesor);
+
 
         }else if(op.equals("2")){
             String s;
@@ -138,7 +148,7 @@ public class Main {
             s = console.readLine("Ingrese la semana en la que se lleva a cabo la tutoría: ");
             p = console.readLine("Ingrese la cantidad de personas que asistieron a la tutoría: ");
         
-            p1.ingresarTutoria(Short.parseShort(s),Short.parseShort(p));
+            profesor.ingresarTutoria(Short.parseShort(s),Short.parseShort(p));
 
         }else if(op.equals("3")){
             break;
@@ -274,5 +284,15 @@ public class Main {
                 break;
         }
         return null;
+    }
+
+    public static Profesor buscarProfesor(ArrayList<Profesor> listaUsuarios, String datos[])
+    {
+        for(Profesor p : listaUsuarios)
+    {
+        if(datos[0].equals(p.getUsuario()))
+            return p;
+    }
+     return null;   
     }
 }

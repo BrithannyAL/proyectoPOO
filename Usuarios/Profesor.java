@@ -38,6 +38,10 @@ public class Profesor extends Usuarios {
        for(Tutoria lt : lt)
        System.out.println("\nSesion de semana:" + lt.getSesion() + "\nTotal de asistencia:"+ lt.getAsistencia()); 
 
+        
+    }
+
+    public void asignarCalificacion(String e,String n,Profesor p){
 
     }
 }
