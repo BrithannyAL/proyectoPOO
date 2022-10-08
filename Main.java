@@ -5,6 +5,7 @@
 import java.util.ArrayList;
 import java.util.Date;
 
+
 import Cursos.*;
 import Usuarios.*;
 import java.io.Console;
@@ -15,6 +16,9 @@ import java.io.Console;
 public class Main {
     public static void main(String[] args) {
 
+
+        Profesor p1 = new Profesor("P1", new String [] {"666"}, "p1@", "p1", "123");
+        
         // CARGAR DATOS DE ESTUDIANTES
         ArrayList<Estudiantes> listaEstudiantes = new ArrayList<>();
         new Estudiantes("A", "a", new Date(2003 / 6 / 12), (short) 12, true, "SC");
@@ -29,6 +33,7 @@ public class Main {
         listaEstudiantes.add(new Estudiantes("Angel", "5", new Date(2003 / 7 / 23),
                 (short) 19, true, "CQ"));
 
+        
         // CARGAR USUARIOS
         ArrayList<Usuarios> usuarios = new ArrayList<>();
         usuarios.add(new Coordinador("A", new String[] { "123", "456" }, "a@", "a", "123"));
@@ -37,6 +42,7 @@ public class Main {
         usuarios.add(new Profesor("E", new String[] { "123", "456" }, "E@", "e", "123"));
         usuarios.add(new Coordinador("C", new String[] { "123", "456" }, "c@", "c", "123"));
         usuarios.add(new Profesor("F", new String[] { "123", "456" }, "F@", "f", "123"));
+
 
         // CARGAR CURSOS
         ArrayList<Cursos> cursos = new ArrayList<>();
@@ -73,11 +79,10 @@ public class Main {
                     break;
             }
         } else if (tipoUsuario == 1) {
-            menuDeProfesores();
+            menuDeProfesores(listaEstudiantes,p1); 
         } else {
             System.out.println("ATENCIÓN: USUARIO NO ENCONTRADO");
         }
-
     }
 
     public static String menuDeCordinadores() {
@@ -90,18 +95,57 @@ public class Main {
         System.out.println("||         [5] Para crear un grupo                                  ||");
         System.out.println("||         [6] Para editar un grupo                                 ||");
         System.out.println("||         [7] Para asociar un estudiante a un curso                ||");
+        System.out.println("||         [8] Para salir                                           ||");
         System.out.println("======================================================================");
 
         Console console = System.console();
         return console.readLine("Escriba la opción que desea ejecutar: ");
     }
 
-    public static void menuDeProfesores() { // Menu con las opciones de un profesor
+    public static void menuDeProfesores(ArrayList<Estudiantes> listaEstudiantes, Profesor p1) { // Menu con las opciones de un profesor
+
+        
+        while(true){
+
         System.out.println("======================================================================");
         System.out.println("||              Bienvenido al menú de profesores!                   ||");
-        System.out.println("||              [1] Para asignar una tutoria                        ||");
+        System.out.println("||              [1] Para asignar una calificación                   ||");
         System.out.println("||              [2] Para agregar una tutoria                        ||");
+        System.out.println("||              [3] Para salir                                      ||");
         System.out.println("======================================================================");
+
+        Console console = System.console();
+        String op;
+        op = console.readLine("Escriba la opción que desea ejecutar: ");
+
+        if(op.equals("1")){
+            String n;
+            String e;
+            
+            
+            for(Estudiantes lista : listaEstudiantes){
+            System.out.println("\nNombre:" + lista.getNombre() + "\nCarnet:"+ lista.getCarnet()); 
+                }
+
+            e = console.readLine("Ingrese el carnet del estudiante que desea calificar: ");
+            n = console.readLine("Ingrese la nota que desea registrar: ");
+            
+            //listaEstudiantes.ingresarTutoria();
+
+        }else if(op.equals("2")){
+            String s;
+            String p;
+            s = console.readLine("Ingrese la semana en la que se lleva a cabo la tutoría: ");
+            p = console.readLine("Ingrese la cantidad de personas que asistieron a la tutoría: ");
+        
+            p1.ingresarTutoria(Short.parseShort(s),Short.parseShort(p));
+
+        }else if(op.equals("3")){
+            break;
+        }else{
+            System.out.println("Opción no válida");
+        }
+    }
     }
 
     public static String[] obtenerUsuarioContra() {
