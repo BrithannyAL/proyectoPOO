@@ -8,11 +8,20 @@ package Clases;
 import Cursos.Cursos;
 
 public class LevantamientoRequisitos {
+    /**
+     * Atributos
+     */
     private Cursos curso_a_levatar;
     private String justificacion;
     private boolean estado;
     private String justificacion_de_Rechazo;
-
+    /**
+     * Constructor de la clase LevantamientoRequisitos
+     * @param cl (curso a levantar)
+     * @param j (justificacion para levantar el requisito)
+     * @param e (estado del levantamiento)
+     * @param jr (justificacion de ser rechazado)
+     */
     public LevantamientoRequisitos(Cursos cl, String j, boolean e, String jr){
         this.curso_a_levatar = cl;
         this.justificacion = j;
