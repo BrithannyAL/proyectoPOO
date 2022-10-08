@@ -8,6 +8,9 @@ package Clases;
 import Cursos.Cursos;
 
 public class LevantamientoRequisitos {
+    /**
+    * Atributos
+    */
     private Cursos curso_a_levatar;
     private String justificacion;
     private boolean estado;
