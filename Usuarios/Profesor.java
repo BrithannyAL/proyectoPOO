@@ -1,5 +1,11 @@
 package Usuarios;
 
+
+import java.util.ArrayList;
+
+
+
+import Clases.*;
 /**
  * Clase que describe a los usuarios de tipo Profesor
  * Clase heredada de la clase Usuarios
@@ -18,5 +24,24 @@ public class Profesor extends Usuarios {
      */
     public Profesor(String nom, String[] tel, String cor, String usu, String con) {
         super(nom, tel, cor, usu, con);
+    }
+
+
+    ArrayList<Tutoria> lt = new ArrayList<>();
+        
+    public void ingresarTutoria(short s, short p){
+        
+        if((s>=1)&&(s<=16)&&(p>=1))
+        {
+            lt.add(new Tutoria(s,p));
+        }
+       for(Tutoria lt : lt)
+       System.out.println("\nSesion de semana:" + lt.getSesion() + "\nTotal de asistencia:"+ lt.getAsistencia()); 
+
+        
+    }
+
+    public void asignarCalificacion(String e,String n,Profesor p){
+
     }
 }
