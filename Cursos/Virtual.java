@@ -19,7 +19,7 @@ public class Virtual extends Cursos {
      * 
      * @param cod  (String)
      * @param nom  (String)
-     * @param i  (short)
+     * @param cre  (short)
      * @param j   (short)
      * @param req  (String[])
      * @param cor  (String[])
@@ -29,9 +29,9 @@ public class Virtual extends Cursos {
      * @param aula (String)
      */
     public Virtual(
-            String cod, String nom, int i, int j, String[] req, String[] cor,
+            String cod, String nom, short cre, short hl, String[] req, String[] cor,
             String[] dias, String hIn, String hFn) {
-        super(cod, nom, i, j, req, cor);
+        super(cod, nom, cre, hl, req, cor);
         this.dias = dias;
         this.horaInicio = hIn;
         this.horaFinal = hFn;

@@ -1,10 +1,10 @@
 /**
- .* Importaciones externas del archivo 
+ * Importaciones externas del archivo 
  */
 
 package Clases;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.ArrayList;
 import Usuarios.Estudiantes;
 import Usuarios.Profesor;

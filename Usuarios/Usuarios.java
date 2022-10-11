@@ -159,17 +159,17 @@ abstract public class Usuarios {
         this.contrasenia = contrasenia;
     }
 
-    public static byte validadUsuario(ArrayList<Usuarios> usuarios, String username, String pass) {
+    public static Usuarios validadUsuario(ArrayList<Usuarios> usuarios, String username, String pass) {
         for (Usuarios c : usuarios) {
             if ((c.getUsuario().equals(username)) && (c.getContrasenia().equals(pass))) {
                 if (c.getClass() == Coordinador.class) {
-                    return 0;
+                    return c;
                 } else if (c.getClass() == Profesor.class) {
-                    return 1;
+                    return c;
                 }
             }
         }
-        return 2;
+        return null;
     }
 
 }
