@@ -4,7 +4,10 @@ package Usuarios;
  * Importaciones externas.
  */
 import java.io.Console;
+import java.util.Date;
 import java.util.ArrayList;
+
+import Clases.Grupos;
 import Cursos.*;
 
 /**
@@ -108,7 +111,7 @@ public class Coordinador extends Usuarios {
         return lista;
     }
 
-    public Cursos agregarCurso() { 
+    public Cursos agregarCurso() {
         System.out.println("1.  Para agragar un curso de modalidad virtual.");
         System.out.println("2.  Para agragar un curso de modalidad virtual asincrónico.");
         System.out.println("3.  Para agragar un curso de modalidad virtual sincrónico.");
@@ -120,19 +123,19 @@ public class Coordinador extends Usuarios {
 
         String codigo = console.readLine("Escriba el código del curso: ");
         String nombre = console.readLine("Escriba el título del curso: ");
-        short creditos = (short) Integer.parseInt(console.readLine("Escriba la cantidad de créditos que vale el curso: "));
-        short horasLectivas = (short) Integer.parseInt(console.readLine("Escriba la cantidad de horas lectivas del curso: "));
+        short creditos = Short.parseShort(console.readLine("Escriba la cantidad de créditos que vale el curso: "));
+        short horasLectivas = Short.parseShort(console.readLine("Escriba la cantidad de horas lectivas del curso: "));
 
         int req = Integer.parseInt(console.readLine("¿El curso tiene requisitos? (1. Sí / 2. No)"));
         String[] requisitos = {};
         if (req == 1)
-        requisitos = obtenerLista("requisito");
-        
-            int cor = Integer.parseInt(console.readLine("¿El curso tiene corequisitos? (1. Sí / 2. No)"));
+            requisitos = obtenerLista("requisito");
+
+        int cor = Integer.parseInt(console.readLine("¿El curso tiene corequisitos? (1. Sí / 2. No)"));
         String[] corequisitos = {};
         if (cor == 1)
             corequisitos = obtenerLista("correquisito");
-        
+
         switch (tipoCurso) {
             case 1:
                 System.out.println("Agregue los días en los que será impartido el curso");
@@ -140,20 +143,21 @@ public class Coordinador extends Usuarios {
                 String horaInicialV = console.readLine("Hora de inicio: ");
                 String horaFinalV = console.readLine("Hora final: ");
                 return new Virtual(
-                    codigo, nombre, creditos, horasLectivas, requisitos, corequisitos, diasV, horaInicialV, horaFinalV);
+                        codigo, nombre, creditos, horasLectivas, requisitos, corequisitos, diasV, horaInicialV,
+                        horaFinalV);
             case 2:
                 String medioComunicacion = console.readLine("Plataforma para compartir el material: ");
                 return new VirtualAsincronico(
-                    codigo, nombre, creditos, horasLectivas, requisitos, corequisitos, medioComunicacion);
+                        codigo, nombre, creditos, horasLectivas, requisitos, corequisitos, medioComunicacion);
             case 3:
                 System.out.println("Agregue los días en los que será impartido el curso");
                 String[] diasVS = obtenerLista("día");
                 String horaInicialVS = console.readLine("Hora de inicio: ");
                 String horaFinalVS = console.readLine("Hora final: ");
                 String plataformaVS = console.readLine("Plataforma para impartir la clase: ");
-                return new VirtualSincronico (
-                    codigo, nombre, creditos, horasLectivas, requisitos, corequisitos,
-                    diasVS, horaInicialVS, horaFinalVS, plataformaVS);
+                return new VirtualSincronico(
+                        codigo, nombre, creditos, horasLectivas, requisitos, corequisitos,
+                        diasVS, horaInicialVS, horaFinalVS, plataformaVS);
             default:
                 break;
         }
@@ -162,7 +166,12 @@ public class Coordinador extends Usuarios {
 
     public ArrayList<Cursos> editarCurso(ArrayList<Cursos> cursos) {
         Console console = System.console();
-        String codigoCurso = console.readLine("Escriba el código del curso que desea editar");
+        System.out.println("1. Para editar un curso virtual");
+        System.out.println("2. Para editar un curso virtual asincrónico");
+        System.out.println("3. Para editar un curso virtual sincrónico");
+        byte tipoCurso = Byte.parseByte(console.readLine("Tipo de curso de desea editar: "));
+
+        String codigoCurso = console.readLine("Escriba el código del curso que desea editar: ");
 
         for (Cursos c : cursos) {
             if (c.getCodigo().equals(codigoCurso)) {
@@ -175,13 +184,14 @@ public class Coordinador extends Usuarios {
                 System.out.println("¿Desea editar la cantidad de créditos del curso?");
                 opcion = Byte.parseByte(console.readLine("1. SÍ / 2. NO"));
                 if (opcion == 1) {
-                    c.setCreditos((short) Integer.parseInt(console.readLine("Nueva cantidad de créditos para el usuario: ")));
+                    c.setCreditos(Short.parseShort(console.readLine("Nueva cantidad de créditos para el usuario: ")));
                 }
 
                 System.out.println("¿Desea editar la cantidad de horas lectivas del curso?");
                 opcion = Byte.parseByte(console.readLine("1. SÍ / 2. NO"));
                 if (opcion == 1) {
-                    c.setHorasLectivas((short) Integer.parseInt(console.readLine("Nueva cantidad de horas lectivas para el usuario: ")));
+                    c.setHorasLectivas(
+                            Short.parseShort(console.readLine("Nueva cantidad de horas lectivas para el usuario: ")));
                 }
 
                 System.out.println("¿Desea editar los cursos requisitos?");
@@ -197,8 +207,128 @@ public class Coordinador extends Usuarios {
                     System.out.println("Digite los nuevos cursos corequisitos para este curso:");
                     c.setCorequisitos(obtenerLista("corequisitos"));
                 }
+
+                switch (tipoCurso) {
+                    case 1:
+                        Virtual cursoVirtual = (Virtual) c;
+                        System.out.println("¿Desea editar los días que se imparte el curso?");
+                        opcion = Byte.parseByte(console.readLine("1. SÍ / 2. NO"));
+                        if (opcion == 1) {
+                            System.out.println("Digite los nuevos días en que se imparten las clases del curso:");
+                            cursoVirtual.setDias(obtenerLista("días"));
+                        }
+
+                        System.out.println("¿Desea editar la hora de inicio de la clase del curso?");
+                        opcion = Byte.parseByte(console.readLine("1. SÍ / 2. NO"));
+                        if (opcion == 1) {
+                            System.out.println("Escriba la hora en el formato (HH:MM AM/PM)");
+                            String horaInicial = console.readLine("Digite la hora inicial:");
+                            cursoVirtual.setHoraInicio(horaInicial);
+                        }
+
+                        System.out.println("¿Desea editar la hora final de la clase del curso?");
+                        opcion = Byte.parseByte(console.readLine("1. SÍ / 2. NO"));
+                        if (opcion == 1) {
+                            System.out.println("Escriba la hora en el formato (HH:MM AM/PM)");
+                            String horaFinal = console.readLine("Digite la hora final:");
+                            cursoVirtual.setHoraFinal(horaFinal);
+                        }
+                        break;
+                    case 2:
+                        VirtualAsincronico cursoVirtualAsincronico = (VirtualAsincronico) c;
+                        System.out.println("¿Desea cambiar la plataforma de comunicación del curso?");
+                        opcion = Byte.parseByte(console.readLine("1. SÍ / 2. NO"));
+                        if (opcion == 1) {
+                            String medioComuniacion = console.readLine("Digite el nuevo medio de comunicación:");
+                            cursoVirtualAsincronico.setMedioComunicacion(medioComuniacion);
+                        }
+                    case 3:
+                        VirtualSincronico cursoVirtualSincronico = (VirtualSincronico) c;
+                        System.out.println("¿Desea editar los días que se imparte el curso?");
+                        opcion = Byte.parseByte(console.readLine("1. SÍ / 2. NO"));
+                        if (opcion == 1) {
+                            System.out.println("Digite los nuevos días en que se imparten las clases del curso:");
+                            cursoVirtualSincronico.setDias(obtenerLista("días"));
+                        }
+
+                        System.out.println("¿Desea editar la hora de inicio de la clase del curso?");
+                        opcion = Byte.parseByte(console.readLine("1. SÍ / 2. NO"));
+                        if (opcion == 1) {
+                            System.out.println("Escriba la hora en el formato (HH:MM AM/PM)");
+                            String horaInicial = console.readLine("Digite la hora inicial:");
+                            cursoVirtualSincronico.setHoraInicio(horaInicial);
+                        }
+
+                        System.out.println("¿Desea editar la hora final de la clase del curso?");
+                        opcion = Byte.parseByte(console.readLine("1. SÍ / 2. NO"));
+                        if (opcion == 1) {
+                            System.out.println("Escriba la hora en el formato (HH:MM AM/PM)");
+                            String horaFinal = console.readLine("Digite la hora final:");
+                            cursoVirtualSincronico.setHoraFinal(horaFinal);
+                        }
+
+                        System.out.println("¿Desea cambiar la plataforma en la que se imparte el curso?");
+                        opcion = Byte.parseByte(console.readLine("1. SÍ / 2. NO"));
+                        if (opcion == 1) {
+                            String plataforma = console.readLine("Digite la nueva plataforma:");
+                            cursoVirtualSincronico.setPlataforma(plataforma);
+                        }
+                    default:
+                        break;
+                }
             }
         }
         return cursos;
+    }
+
+    public Grupos crearGrupo(ArrayList<Profesor> profesores) {
+        Console console = System.console();
+        System.out.println("=======================================================================");
+        String nombreProfesor = console.readLine("Profesor asignado para el grupo: ");
+        Profesor profe = metodos.buscarProfesor(profesores, nombreProfesor);
+        System.out.println("Digite la fecha en el formato (DD-MM-YY)");
+        String fecha = console.readLine("Digite la fecha de inicio del grupo: ");
+        Date fechaInicial = metodos.obtenerFecha(fecha);
+        fecha = console.readLine("Digite la fecha final del grupo: ");
+        Date fechaFinal = metodos.obtenerFecha(fecha);
+        short numeroGrupo = Short.parseShort(console.readLine("Digite el número de grupo: "));
+
+        return new Grupos(profe, fechaInicial, fechaFinal, numeroGrupo);
+    }
+
+    public ArrayList<Grupos> editarGrupo(ArrayList<Grupos> grupos, ArrayList<Profesor> profesores) {
+        Console console = System.console();
+        short editarGrupoNumero = Short.parseShort(console.readLine("Número del grupo que desea editar: "));
+        for (Grupos g : grupos) {
+            if (g.getNumeroGrupo() == editarGrupoNumero) {
+                System.out.println("¿Desea cambiar al profesor asignado para el grupo?");
+                int opcion = Byte.parseByte(console.readLine("1. SÍ / 2. NO"));
+                if (opcion == 1) {
+                    Profesor profe = metodos.buscarProfesor(
+                        profesores, console.readLine("Nombre del profesor que desea asignar: "));
+                    g.setProfesor(profe);
+                }
+
+                System.out.println("¿Desea cambiar la fecha inicial del grupo?");
+                opcion = Byte.parseByte(console.readLine("1. SÍ / 2. NO"));
+                if (opcion == 1) {
+                    System.out.println("Escriba la fecha en el formato (YY-MM-DD)");
+                    Date fechaInicial = metodos.obtenerFecha(
+                        console.readLine("Digite la nueva fecha inicial del grupo: "));
+                    g.setFecha_inicio(fechaInicial);
+                }
+
+                System.out.println("¿Desea cambiar la fecha final del grupo?");
+                opcion = Byte.parseByte(console.readLine("1. SÍ / 2. NO"));
+                if (opcion == 1) {
+                    System.out.println("Escriba la fecha en el formato (YY-MM-DD)");
+                    Date fechaInicial = metodos.obtenerFecha(
+                        console.readLine("Digite la nueva fecha final del grupo: "));
+                    g.setFecha_inicio(fechaInicial);
+                }
+            }
+
+        }
+        return grupos;
     }
 }

@@ -5,8 +5,10 @@
 import java.util.ArrayList;
 import java.util.Date;
 
+import Clases.Grupos;
 import Cursos.*;
 import Usuarios.*;
+import Usuarios.metodos;
 import java.io.Console;
 
 /**
@@ -15,21 +17,20 @@ import java.io.Console;
 public class Main {
     public static void main(String[] args) {
 
+        Profesor p1 = new Profesor("P1", new String[] { "666" }, "p1@", "p1", "123");
 
-        Profesor p1 = new Profesor("P1", new String [] {"666"}, "p1@", "p1", "123");
-        
         // CARGAR DATOS DE ESTUDIANTES
         ArrayList<Estudiantes> listaEstudiantes = new ArrayList<>();
         new Estudiantes("A", "a", new Date(2003 / 6 / 12), (short) 12, true, "SC");
-        listaEstudiantes.add(new Estudiantes("Veronica", "1", new Date(2003 / 4 / 12),
+        listaEstudiantes.add(new Estudiantes("Veronica", "1", metodos.obtenerFecha("2003-4-12"),
                 (short) 19, true, "Santa Rosa de Pocosol"));
-        listaEstudiantes.add(new Estudiantes("Juan", "2", new Date(2003 / 6 / 12),
+        listaEstudiantes.add(new Estudiantes("Juan", "2", metodos.obtenerFecha("2003-6-12"),
                 (short) 19, false, "Santa Clara"));
-        listaEstudiantes.add(new Estudiantes("Pedro", "3", new Date(2003 / 3 / 5),
+        listaEstudiantes.add(new Estudiantes("Pedro", "3", metodos.obtenerFecha("2003-3-5"),
                 (short) 19, false, "Fortuna"));
-        listaEstudiantes.add(new Estudiantes("Maria", "4", new Date(2003 / 2 / 6),
+        listaEstudiantes.add(new Estudiantes("Maria", "4", metodos.obtenerFecha("2003-2-6"),
                 (short) 19, true, "Florencia"));
-        listaEstudiantes.add(new Estudiantes("Angel", "5", new Date(2003 / 7 / 23),
+        listaEstudiantes.add(new Estudiantes("Angel", "5", metodos.obtenerFecha("2003-7-23"),
                 (short) 19, true, "CQ"));
 
         // CARGAR USUARIOS
@@ -50,13 +51,25 @@ public class Main {
         ArrayList<Cursos> cursos = new ArrayList<>();
         cursos.add(new Virtual(
                 "IC1400", "Fundamentos de organización de computadoras", (short) 3, (short) 4,
-                null, null, new String[] { "Miércoles" }, "1:30pm", "4:05pm"));
+                null, null, new String[] { "Miércoles" }, "1:30 PM", "4:05 PM"));
         cursos.add(new VirtualAsincronico(
                 "MA1403", "Matemática discreta", (short) 4, (short) 4,
                 null, null, "TecDigital"));
         cursos.add(new VirtualSincronico("IC2101", "Programación orientada a objetos", (short) 3, (short) 9,
                 new String[] { "Introducción a la programación", "Taller de programación" },
-                null, new String[] { "Lunes" }, "7:55am", "11.30am", "ZOOM"));
+                null, new String[] { "Lunes" }, "7:55 AM", "11:30 AM", "ZOOM"));
+
+        // CARGAR DATOS GRUPOS
+        ArrayList<Grupos> grupos = new ArrayList<>();
+        grupos.add(new Grupos(
+                listaProfesores.get(0), metodos.obtenerFecha("2022-7-24"),
+                metodos.obtenerFecha("2022-11-24"), (short) 1));
+        grupos.add(new Grupos(
+                listaProfesores.get(1), metodos.obtenerFecha("2022-7-24"),
+                metodos.obtenerFecha("2022-11-24"), (short) 2));
+        grupos.add(new Grupos(
+                listaProfesores.get(2), metodos.obtenerFecha("2022-7-24"),
+                metodos.obtenerFecha("2022-11-24"), (short) 3));
 
         // Procedimiento para iniciar sesión.
         String datos[] = obtenerUsuarioContra();
@@ -79,12 +92,22 @@ public class Main {
                         if (c != null)
                             cursos.add(c);
                         break;
+                    case 4:
+                        cursos = coordinadorlog.editarCurso(cursos);
+                        break;
+                    case 5:
+                        Grupos g = coordinadorlog.crearGrupo(listaProfesores);
+                        if (g != null)
+                            grupos.add(g);
+                        break;
+                    case 6:
+                        grupos = coordinadorlog.editarGrupo(grupos, listaProfesores);
                     default:
                         System.out.println("ATENCIÓN: La opción que ha digitado es invalida para el menú.");
                         break;
                 }
             } else if (usuarioLog.getClass() == Profesor.class) {
-                menuDeProfesores(listaEstudiantes,p1,listaProfesores,datos); 
+                menuDeProfesores(listaEstudiantes, p1, listaProfesores, datos);
             } else {
                 System.out.println("ATENCIÓN: USUARIO NO ENCONTRADO");
             }
@@ -105,7 +128,7 @@ public class Main {
             System.out.println("||         [5] Para crear un grupo                                  ||");
             System.out.println("||         [6] Para editar un grupo                                 ||");
             System.out.println("||         [7] Para asociar un estudiante a un curso                ||");
-            System.out.println("||         [8] Para salir                                           ||");
+            System.out.println("||         [0] Para salir                                           ||");
             System.out.println("======================================================================");
 
             respuesta = Integer.parseInt(console.readLine("Escriba la opción que desea ejecutar: "));
@@ -129,7 +152,7 @@ public class Main {
             System.out.println("||              Bienvenido al menú de profesores!                   ||");
             System.out.println("||              [1] Para asignar una calificación                   ||");
             System.out.println("||              [2] Para agregar una tutoria                        ||");
-            System.out.println("||              [3] Para salir                                      ||");
+            System.out.println("||              [0] Para salir                                      ||");
             System.out.println("======================================================================");
 
             Console console = System.console();
@@ -168,14 +191,12 @@ public class Main {
         return respuesta; // Se retoran las variables de ususario y contrasena
     }
 
-    //MÉTODOS Y FUNCIONES QUE CORRESPONDE AL MENU DE PROFESORES
-    public static Profesor buscarProfesor(ArrayList<Profesor> listaUsuarios, String datos[])
-    {
-        for(Profesor p : listaUsuarios)
-    {
-        if(datos[0].equals(p.getUsuario()))
-            return p;
-    }
-     return null;   
+    // MÉTODOS Y FUNCIONES QUE CORRESPONDE AL MENU DE PROFESORES
+    public static Profesor buscarProfesor(ArrayList<Profesor> listaUsuarios, String datos[]) {
+        for (Profesor p : listaUsuarios) {
+            if (datos[0].equals(p.getUsuario()))
+                return p;
+        }
+        return null;
     }
 }

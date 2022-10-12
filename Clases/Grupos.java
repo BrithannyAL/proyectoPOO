@@ -6,8 +6,7 @@ package Clases;
 
 import java.util.Date;
 import java.util.ArrayList;
-import Usuarios.Estudiantes;
-import Usuarios.Profesor;
+import Usuarios.*;
 
 /**
  * Clase que describe los grupos que se registran en el sistema para la gestón
