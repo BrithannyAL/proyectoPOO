@@ -121,7 +121,7 @@ public class Main {
         while (inicio) {
             System.out.println("======================================================================");
             System.out.println("||         Bienvenido al menú de coordinadores!                     ||");
-            System.out.println("||         [1] Para crear un usuario                                ||");
+            System.out.println("||         [1] Registrar nuevo usuario                              ||");
             System.out.println("||         [2] Para editar un usuario                               ||");
             System.out.println("||         [3] Para agregar un curso                                ||");
             System.out.println("||         [4] Para editar un curso                                 ||");

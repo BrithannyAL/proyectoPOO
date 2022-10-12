@@ -1,5 +1,8 @@
 package Cursos;
 
+import java.util.ArrayList;
+import Clases.*;
+
 /**
  * Describe los cursos del sistema para gestión de registros académicos del TEC
  * 
@@ -15,6 +18,7 @@ abstract public class Cursos {
     protected short horasLectivas; // Cantidad de horas de clase
     protected String[] requisitos; // Cursos que se deben aprobar primero
     protected String[] corequisitos; // Cursos a llevar en el mismo semestre
+    protected ArrayList<Grupos> grupos; //Lista de grupos que lo cursan
 
     /**
      * Constructutor para la creación de instansias de la clase cursos
@@ -145,5 +149,11 @@ abstract public class Cursos {
      */
     public void setCorequisitos(String[] corequisitos) {
         this.corequisitos = corequisitos;
+    }
+
+    @Override
+    public String toString() {
+        String cadena = (this.codigo + ": " + this.nombre + " [" + this.creditos + "]");
+        return cadena;
     }
 }

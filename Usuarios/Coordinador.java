@@ -42,7 +42,7 @@ public class Coordinador extends Usuarios {
         String telefonos[] = { console.readLine("Teléfono del usuario: ") };
         String correo = console.readLine("Correo electrónico del usuario: ");
         String usuario = console.readLine("Nombre de usuario: ");
-        String contrasenia = console.readLine("Contrasena de usuario: ");
+        String contrasenia = console.readLine("Contrasena de usuario: ");        
 
         if (tipoUsuario == 1) {
             return new Coordinador(nombre, telefonos, correo, usuario, contrasenia);
@@ -330,5 +330,28 @@ public class Coordinador extends Usuarios {
 
         }
         return grupos;
+    }
+
+    public ArrayList<Estudiantes> asociarEstudianteCurso(ArrayList<Estudiantes> estudiantes, ArrayList<Cursos> cursos) {
+        Console console = System.console();
+        Estudiantes encontrado = null;
+        String estudiante = console.readLine("Carnet del estudiante al que se le va a asociar el curso: ");
+        for (Estudiantes e: estudiantes) {
+            if (e.getCarnet().equals(estudiante)) {
+                encontrado = e;
+                for (Cursos c: cursos) {
+                    c.toString();
+                }
+                String codigo = console.readLine("Digitel el código del curso que desea asociar: ");
+                Cursos cursoAsociar = metodos.buscarCursos(cursos, codigo);
+                e.setCursos(cursoAsociar);
+                System.out.println("-EL CURSO SE HA ASOCIADO CORRECTAMENTE-");
+                return estudiantes;
+            }
+        }
+        if (encontrado == null) {
+            System.out.println("-EL ESTUDIANTE NO SE ENCUENTRA REGISTRADO-");
+        }
+        return estudiantes;
     }
 }

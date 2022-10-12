@@ -3,7 +3,10 @@
  */
 package Usuarios;
 
+import java.util.ArrayList;
 import java.util.Date;
+
+import Cursos.*;
 
 /**
  * Clase que describe a los estudiantes que se registran en el sistema para la
@@ -21,6 +24,7 @@ public class Estudiantes {
     private short edad; // Edad del estudiante
     private boolean genero; // Genero del estudiante (true/femenino y false/masculino)
     private String lugarProcedencia; // Lugar donde vive el estudiante
+    private ArrayList<Cursos> cursos; //Lista de cursos que matriculó
 
     /**
      * Contructor de la clase estudiantes
@@ -160,5 +164,13 @@ public class Estudiantes {
      */
     public void setLugarProcedencia(String lugarProcedencia) {
         this.lugarProcedencia = lugarProcedencia;
+    }
+
+    public ArrayList<Cursos> getCursos() {
+        return cursos;
+    }
+
+    public void setCursos(Cursos curso) {
+        this.cursos.add(curso);
     }
 }
