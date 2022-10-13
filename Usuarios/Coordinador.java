@@ -379,8 +379,13 @@ public class Coordinador extends Usuarios {
                     c.toString();
                 }
                 String codigo = console.readLine("Digitel el código del curso que desea matricular: ");
-                Cursos cursoAsociar = metodos.buscarCursos(cursos, codigo);
-                e.setCursos(cursoAsociar);
+                for (Cursos c: cursos) {
+                    if (c.getCodigo().equals(codigo)) {
+                        c.setEstudiantesMatriuclados(e);
+                        e.setCursos(c);
+                    }
+                }
+
                 System.out.println("-EL ESTUDIANTE SE MATRICULÓ CORRECTAMENTE-");
                 return estudiantes;
             }

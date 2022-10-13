@@ -151,6 +151,14 @@ abstract public class Cursos {
         this.corequisitos = corequisitos;
     }
 
+    public ArrayList<Estudiantes> getEstudiantesMatriuclados() {
+        return estudiantesMatriuclados;
+    }
+
+    public void setEstudiantesMatriuclados(Estudiantes estudiante) {
+        this.estudiantesMatriuclados.add(estudiante);
+    }
+
     @Override
     public String toString() {
         String cadena = (this.codigo + ": " + this.nombre + " [" + this.creditos + "]");
