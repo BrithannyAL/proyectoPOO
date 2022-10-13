@@ -1,10 +1,10 @@
-
 /**
  * Importaciones externas al archivo
  */
 import java.util.ArrayList;
 
 import Clases.Grupos;
+import Clases.Tramites;
 import Cursos.*;
 import Usuarios.*;
 import java.io.Console;
@@ -21,6 +21,7 @@ public class Main {
         ArrayList<Profesor> profesores = datos.cargarProfesores();
         ArrayList<Cursos> cursos = datos.cargarCursos();
         ArrayList<Grupos> grupos = datos.cargarGrupos();
+        ArrayList<Tramites> tramites = datos.cargarTramites();
 
         // Procedimiento para iniciar sesión.
         String datos[] = obtenerUsuarioContra();
@@ -67,6 +68,11 @@ public class Main {
                         break;
                     case 9:
                         estudiantes = coordinadorlog.asociarEstudianteCurso(estudiantes, cursos);
+                        break;
+                    case 10:
+                        Tramites t = coordinadorlog.CrearTramite(estudiantes, cursos);
+                        if (t != null)
+                            tramites.add(t);
                         break;
                     case 0:
                         System.exit(ejecucion);
@@ -116,6 +122,7 @@ public class Main {
             System.out.println("||         [7] Crear un grupo                                       ||");
             System.out.println("||         [8] Editar un grupo                                      ||");
             System.out.println("||         [9] Matricular estudiante a un curso                     ||");
+            System.out.println("||         [10] Registrar un nuevo tramite                          ||");
             System.out.println("||         [0] Para salir                                           ||");
             System.out.println("======================================================================");
 
