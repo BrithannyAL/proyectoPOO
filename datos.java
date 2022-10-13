@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 import Clases.Grupos;
+import Clases.Tramites;
 import Cursos.*;
 import Usuarios.*;
 
@@ -78,5 +79,10 @@ public class datos {
                 metodos.obtenerFecha("2022-11-24"), (short) 3));
 
         return grupos;
+    }
+
+    public static ArrayList<Tramites> cargarTramites(){
+        ArrayList<Tramites> tramites = new ArrayList<>();
+        return tramites;
     }
 }
