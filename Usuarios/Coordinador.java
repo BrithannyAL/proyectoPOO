@@ -328,8 +328,13 @@ public class Coordinador extends Usuarios {
         fecha = console.readLine("Digite la fecha final del grupo: ");
         Date fechaFinal = metodos.obtenerFecha(fecha);
         short numeroGrupo = Short.parseShort(console.readLine("Digite el número de grupo: "));
-
-        return new Grupos(profe, fechaInicial, fechaFinal, numeroGrupo);
+        Grupos nuevoGrupo = new Grupos(profe, fechaInicial, fechaFinal, numeroGrupo);
+        for (Profesor p: profesores) {
+            if (p.getNombre().equals(profe.getNombre())) {
+                p.setGrupos(nuevoGrupo);
+            }
+        }
+        return nuevoGrupo;
     }
 
     public ArrayList<Grupos> editarGrupo(ArrayList<Grupos> grupos, ArrayList<Profesor> profesores) {
@@ -381,7 +386,6 @@ public class Coordinador extends Usuarios {
                 String codigo = console.readLine("Digitel el código del curso que desea matricular: ");
                 for (Cursos c: cursos) {
                     if (c.getCodigo().equals(codigo)) {
-                        c.setEstudiantesMatriuclados(e);
                         e.setCursos(c);
                     }
                 }

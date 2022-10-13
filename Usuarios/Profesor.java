@@ -12,7 +12,8 @@ import Clases.*;
  */
 public class Profesor extends Usuarios {
 
-    ArrayList<Tutoria> lt = new ArrayList<>();
+    private ArrayList<Tutoria> tutorias;
+    private ArrayList<Grupos> grupos;
 
     /**
      * Constructor de la clase que se hereda de Usuarios
@@ -27,18 +28,34 @@ public class Profesor extends Usuarios {
         super(nom, tel, cor, usu, con);
     }
 
+    public ArrayList<Tutoria> getTutorias() {
+        return tutorias;
+    }
+
+    public void setTutorias(Tutoria tutoria) {
+        this.tutorias.add(tutoria);
+    }
+
+    public ArrayList<Grupos> getGrupos() {
+        return grupos;
+    }
+
+    public void setGrupos(Grupos grupo) {
+        this.grupos.add(grupo);
+    }
+
     public void ingresarTutoria() {
         Console console = System.console();
         int semana = Integer.parseInt(console.readLine("Ingrese la semana en la que se lleva a cabo la tutoría: "));
         int asistencia = Integer.parseInt(console.readLine("Ingrese la cantidad de personas que asistieron a la tutoría: "));
-        if ((semana >= 1) && (semana <= 16) && (asistencia >= 1)) {
-            lt.add(new Tutoria( (short) semana, (short) asistencia));
+        if ((1 <= semana) && (semana <= 16) && (1 <= asistencia)) {
+            this.tutorias.add(new Tutoria( (short) semana, (short) asistencia));
         }
-        for (Tutoria lt : lt)
-            System.out.println("\nSesion de semana:" + lt.getSesion() + "\nTotal de asistencia:" + lt.getAsistencia());
+        for (Tutoria t : this.tutorias)
+            t.toString();
     }
 
     public void asignarCalificacion(String e, String n, Profesor p) {
-
+        //
     }
 }
