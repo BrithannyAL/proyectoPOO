@@ -414,6 +414,9 @@ public class Coordinador extends Usuarios {
         String fecha = console.readLine("Digite la fecha de registro del tramite: ");
         Date fechaRegistro = metodos.obtenerFecha(fecha);
 
+        Tramites nuevoTramite = new Tramites(estud, descripcion, fechaRegistro);
+        return nuevoTramite;
+
         System.out.println("[1] Levantamiento de Requisitos");
         System.out.println("[2] Levantamientos de RN");
         System.out.println("[3] Solicitudes de becas");
@@ -444,11 +447,13 @@ public class Coordinador extends Usuarios {
                     boolean estad = true;
                     String justiRechazo = "";                    
                     LevantamientoRequisitos nuevoRequisitos = new LevantamientoRequisitos(CursoLevantar, justificacion, estad, justiRechazo);
+                    return nuevoRequisitos;
                 }
                 else{
                     boolean estad = false;
                     String justiRechazo = console.readLine("En caso de ser rechazado, digite la justificacion de rechazo: ");
                     LevantamientoRequisitos nuevoRequisitos = new LevantamientoRequisitos(CursoLevantar, justificacion, estad, justiRechazo);
+                    return nuevoRequisitos;
                 }
     }
     public LevantamientoRN crearLevantamientoRN(ArrayList<Cursos> cursos){
@@ -461,10 +466,12 @@ public class Coordinador extends Usuarios {
                 if (estado == "aprovado"){
                     Boolean estad = true;
                     LevantamientoRN nuevoLevantRN = new LevantamientoRN(cursoAsociado, cursoMatricular, estad);
+                    return nuevoLevantRN;
                 }
                 else{
                     Boolean estad = false;
                     LevantamientoRN nuevoLevantRN = new LevantamientoRN(cursoAsociado, cursoMatricular, estad);
+                    return nuevoLevantRN;
                 }
     }
     public SolicitudesBeca crearSolicitudesBeca(ArrayList<Cursos> cursos){
@@ -474,10 +481,12 @@ public class Coordinador extends Usuarios {
         if (tipoBeca == "completa"){
             boolean tipo = true;
             SolicitudesBeca nuevaBeca = new SolicitudesBeca(periodo, tipo);
+            return nuevaBeca;
         }
         else{
             boolean tipo = false;
             SolicitudesBeca nuevaBeca = new SolicitudesBeca(periodo, tipo);
+            return nuevaBeca;
         }
     }
 
