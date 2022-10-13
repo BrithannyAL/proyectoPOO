@@ -3,7 +3,7 @@
  */
 package Clases;
 
-import java.sql.Date;
+
 import java.util.ArrayList;
 import Usuarios.Estudiantes;
 
@@ -18,7 +18,7 @@ public class Acompañamientos {
      */
     private String fecha; // Fecha en la que se realiza el acompanamiento
     private String tipoReporte; // Tipo de reporte realizado
-    private ArrayList<Estudiantes> estudiantes; // Estudiantes que usaron el acompanamiento
+    private Estudiantes estudiantes; // Estudiantes que usaron el acompanamiento
     private String notaDescriptiva; // Nota que describe el acompanamiento
 
     /**
@@ -31,6 +31,7 @@ public class Acompañamientos {
     public Acompañamientos(String f, String tr, Estudiantes est,String nd) {
         this.fecha = f;
         this.tipoReporte = tr;
+        this.estudiantes = est;
         this.notaDescriptiva = nd;
     }
 
@@ -75,7 +76,7 @@ public class Acompañamientos {
      * 
      * @return
      */
-    public ArrayList<Estudiantes> getEstudiantes() {
+    public Estudiantes getEstudiantes() {
         return estudiantes;
     }
 
@@ -84,7 +85,7 @@ public class Acompañamientos {
      * 
      * @param estudiantes
      */
-    public void setEstudiantes(ArrayList<Estudiantes> estudiantes) {
+    public void setEstudiantes(Estudiantes estudiantes) {
         this.estudiantes = estudiantes;
     }
 

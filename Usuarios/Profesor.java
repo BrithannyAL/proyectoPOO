@@ -1,7 +1,6 @@
 package Usuarios;
 
 import java.io.Console;
-import java.sql.Date;
 import java.util.ArrayList;
 import Clases.*;
 
@@ -28,14 +27,16 @@ public class Profesor extends Usuarios {
      */
     public Profesor(String nom, String[] tel, String cor, String usu, String con) {
         super(nom, tel, cor, usu, con);
+        this.acompañamientos = new ArrayList<>();
+        this.tutorias= new ArrayList<>();
     }
 
     public ArrayList<Tutoria> getTutorias() {
         return tutorias;
     }
 
-    public void setTutorias(Tutoria tutoria) {
-        this.tutorias.add(tutoria);
+    public void setTutorias(ArrayList<Tutoria> tutorias) {
+        this.tutorias = tutorias;
     }
 
     public ArrayList<Grupos> getGrupos() {
@@ -54,20 +55,27 @@ public class Profesor extends Usuarios {
         this.acompañamientos = acompañamientos;
     }
 
+
+ 
+
     public void ingresarTutoria() {
         Console console = System.console();
         int semana = Integer.parseInt(console.readLine("Ingrese la semana en la que se lleva a cabo la tutoría: "));
         int asistencia = Integer.parseInt(console.readLine("Ingrese la cantidad de personas que asistieron a la tutoría: "));
         if ((1 <= semana) && (semana <= 16) && (1 <= asistencia)) {
             this.tutorias.add(new Tutoria( (short) semana, (short) asistencia));
+
+            System.out.println(this.getTutorias()); 
         }
-        for (Tutoria t : this.tutorias)
-            t.toString();
+
     }
 
     public void asignarCalificacion(String e, String n, Profesor p) {
         //
     }
+
+
+
 
     public void ingresarAcompañamiento(ArrayList<Estudiantes> estudiantes){
         Console console = System.console();
@@ -79,8 +87,11 @@ public class Profesor extends Usuarios {
         String est = console.readLine("Ingrese el carnet del estudiante a asociar: ");
         Estudiantes estudiante = Estudiantes.buscarEstudiante(estudiantes,est);
         if(estudiante != null){
-           acompañamientos.add(new Acompañamientos(fecha,tipo,estudiante,nota));
+            this.acompañamientos.add(new Acompañamientos(fecha,tipo,estudiante,nota));
+
+            
         }
+
 
     }
 }
