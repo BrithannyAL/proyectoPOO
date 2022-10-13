@@ -28,6 +28,8 @@ public class Main {
         if (usuarioLog != null) {
             if (usuarioLog.getClass() == Coordinador.class) {
                 Coordinador coordinadorlog = (Coordinador) usuarioLog;
+
+                while(true){
                 byte ejecucion = (byte) menuDeCordinadores();
                 switch (ejecucion) {
                     case 1:
@@ -65,24 +67,33 @@ public class Main {
                         break;
                     case 9:
                         estudiantes = coordinadorlog.asociarEstudianteCurso(estudiantes, cursos);
+                        break;
+                    case 0:
+                        System.exit(ejecucion);
+                        break;
                     default:
                         System.out.println("ATENCIÓN: La opción que ha digitado es invalida para el menú.");
                         break;
+                    }
                 }
             } else if (usuarioLog.getClass() == Profesor.class) {
                 Profesor profesorLog = (Profesor) usuarioLog;
+                while(true){
                 byte ejecucion = (byte) menuDeProfesores();
                 switch (ejecucion) {
                     case 2:
                         profesorLog.ingresarTutoria();
                         break;
+                    case 0:
+                        System.exit(ejecucion); 
                 
                     default:
                         break;
-                }
+                }}
             } else {
                 System.out.println("ATENCIÓN: USUARIO NO ENCONTRADO");
             }
+            
         }
     }
 
@@ -100,14 +111,14 @@ public class Main {
             System.out.println("||         [5] Agregar un curso                                     ||");
             System.out.println("||         [6] Editar un curso                                      ||");
             System.out.println("||         [7] Crear un grupo                                       ||");
-            System.out.println("||         [8] Cditar un grupo                                      ||");
-            System.out.println("||         [9] Matricular estudiante a un cursp                     ||");
+            System.out.println("||         [8] Editar un grupo                                      ||");
+            System.out.println("||         [9] Matricular estudiante a un curso                     ||");
             System.out.println("||         [0] Para salir                                           ||");
             System.out.println("======================================================================");
 
             respuesta = Integer.parseInt(console.readLine("Escriba la opción que desea ejecutar: "));
 
-            if ((0 < respuesta) && (respuesta <= 8)) {
+            if ((0 <= respuesta) && (respuesta <= 9)) {
                 inicio = false;
             } else {
                 System.out.println("OPCIÓN INVÁLIDA: INTENTE DE NUEVO");
@@ -130,7 +141,7 @@ public class Main {
 
             op = Integer.parseInt(console.readLine("Escriba la opción que desea ejecutar: "));
 
-            if ((0 < op) && (op <= 2)) {
+            if ((0 <= op) && (op <= 2)) {
                 inicio = false;
             } else {
                 System.out.println("OPCIÓN INVÁLIDA: INTENTE DE NUEVO");

@@ -56,36 +56,36 @@ public class Coordinador extends Usuarios {
 
     public ArrayList<Usuarios> editarUsuario(ArrayList<Usuarios> usuarios) {
         Console console = System.console();
-        String nombre = console.readLine("Escriba el nombre del usuario que desea editar");
+        String nombre = console.readLine("Escriba el nombre del usuario que desea editar: ");
 
         for (Usuarios u : usuarios) {
             if (u.getNombre().equals(nombre)) {
                 System.out.println("¿Desea editar el nombre del usuario?");
-                byte opcion = Byte.parseByte(console.readLine("1. SÍ / 2. NO"));
+                byte opcion = Byte.parseByte(console.readLine("1. SÍ / 2. NO  " ));
                 if (opcion == 1) {
                     u.setNombre(console.readLine("Nuevo nombre del usuario: "));
                 }
 
                 System.out.println("¿Desea editar los telefonos del usuario?");
-                opcion = Byte.parseByte(console.readLine("1. SÍ / 2. NO"));
+                opcion = Byte.parseByte(console.readLine("1. SÍ / 2. NO  " ));
                 if (opcion == 1) {
                     u.setTelefonos();
                 }
 
                 System.out.println("¿Desea editar el correo del usuario?");
-                opcion = Byte.parseByte(console.readLine("1. SÍ / 2. NO"));
+                opcion = Byte.parseByte(console.readLine("1. SÍ / 2. NO  "));
                 if (opcion == 1) {
                     u.setCorreo(console.readLine("Nuevo correo del usuario: "));
                 }
 
                 System.out.println("¿Desea editar el nombre usuario?");
-                opcion = Byte.parseByte(console.readLine("1. SÍ / 2. NO"));
+                opcion = Byte.parseByte(console.readLine("1. SÍ / 2. NO  "));
                 if (opcion == 1) {
                     u.setUsuario(console.readLine("Nuevo nombre usuario: "));
                 }
 
                 System.out.println("¿Desea editar la contraseña del usuario?");
-                opcion = Byte.parseByte(console.readLine("1. SÍ / 2. NO"));
+                opcion = Byte.parseByte(console.readLine("1. SÍ / 2. NO  "));
                 if (opcion == 1) {
                     u.setContrasenia(console.readLine("Nueva contraseña para el usuario: "));
                 }
