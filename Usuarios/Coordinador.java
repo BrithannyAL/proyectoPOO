@@ -377,7 +377,6 @@ public class Coordinador extends Usuarios {
         }
         return grupos;
     }
-
     public ArrayList<Estudiantes> asociarEstudianteCurso(ArrayList<Estudiantes> estudiantes, ArrayList<Cursos> cursos) {
         Console console = System.console();
         Estudiantes encontrado = null;
@@ -404,13 +403,8 @@ public class Coordinador extends Usuarios {
         }
         return estudiantes;
     }
-   /**
-    * 
-    * @param estudiantes
-    * @param cursos
-    * @return
-    */
-    public Tramites CrearTramite (ArrayList<Estudiantes> estudiantes, ArrayList<Cursos> cursos){
+
+    public Tramites CrearTramite (ArrayList<Estudiantes> estudiantes, ArrayList<Cursos> cursos, ArrayList<Tramites> tramites){
         Console console = System.console();
         int tipoTram = 0;
         String carnetEstudiante = console.readLine("Carne de estudiante asiciado: ");
@@ -419,7 +413,7 @@ public class Coordinador extends Usuarios {
         System.out.println("Digite la fecha en el formato (DD-MM-YY)");
         String fecha = console.readLine("Digite la fecha de registro del tramite: ");
         Date fechaRegistro = metodos.obtenerFecha(fecha);
-        Tramites tramitacion = new Tramites(estud, descripcion, fechaRegistro);
+
         System.out.println("[1] Levantamiento de Requisitos");
         System.out.println("[2] Levantamientos de RN");
         System.out.println("[3] Solicitudes de becas");
@@ -427,7 +421,22 @@ public class Coordinador extends Usuarios {
         tipoTram = Integer.parseInt(console.readLine("Escriba la opción del tramite desea ejecutar: "));
 
             if (1 == tipoTram) {
-                String codCursoLevantar = console.readLine("Digite el codigo del curso a levantar: ");
+                crearLevantamientoRequ(cursos);
+            }
+            if (2 == tipoTram){
+                crearLevantamientoRN(cursos);
+            }
+            if (3 == tipoTram){
+                crearSolicitudesBeca(cursos);
+            }
+            else{
+                System.out.println("OPCIÓN INVÁLIDA: INTENTE DE NUEVO");
+            }
+    }
+
+    public LevantamientoRequisitos crearLevantamientoRequ(ArrayList<Cursos> cursos){
+        Console console = System.console();
+        String codCursoLevantar = console.readLine("Digite el codigo del curso a levantar: ");
                 Cursos CursoLevantar = metodos.buscarCursos(cursos, codCursoLevantar);
                 String justificacion = console.readLine("Digite la justificacion: ");
                 String estado = console.readLine("Digite el estado (aprovado o reachazado): ");
@@ -441,9 +450,10 @@ public class Coordinador extends Usuarios {
                     String justiRechazo = console.readLine("En caso de ser rechazado, digite la justificacion de rechazo: ");
                     LevantamientoRequisitos nuevoRequisitos = new LevantamientoRequisitos(CursoLevantar, justificacion, estad, justiRechazo);
                 }
-            }
-            if (2 == tipoTram){
-                String codCursoAsociado = console.readLine("Digite el codigo del curso asociado: ");
+    }
+    public LevantamientoRN crearLevantamientoRN(ArrayList<Cursos> cursos){
+        Console console = System.console();
+        String codCursoAsociado = console.readLine("Digite el codigo del curso asociado: ");
                 Cursos cursoAsociado = metodos.buscarCursos(cursos, codCursoAsociado);
                 String codCursoMatricular = console.readLine("Digite el codigo del curso a matricular: ");
                 Cursos cursoMatricular = metodos.buscarCursos(cursos, codCursoMatricular);
@@ -456,21 +466,19 @@ public class Coordinador extends Usuarios {
                     Boolean estad = false;
                     LevantamientoRN nuevoLevantRN = new LevantamientoRN(cursoAsociado, cursoMatricular, estad);
                 }
-            }
-            if (3 == tipoTram){
-                String periodo = console.readLine("Digite el periodo: ");
-                String tipoBeca = console.readLine("Digite el tipo de Beca (completa, prestamo): ");
-                if (tipoBeca == "completa"){
-                    boolean tipo = true;
-                    SolicitudesBeca nuevaBeca = new SolicitudesBeca(periodo, tipo);
-                }
-                else{
-                    boolean tipo = false;
-                    SolicitudesBeca nuevaBeca = new SolicitudesBeca(periodo, tipo);
-                }
-            }
-            else{
-                System.out.println("OPCIÓN INVÁLIDA: INTENTE DE NUEVO");
-            }
-    }  
+    }
+    public SolicitudesBeca crearSolicitudesBeca(ArrayList<Cursos> cursos){
+        Console console = System.console();
+        String periodo = console.readLine("Digite el periodo: ");
+        String tipoBeca = console.readLine("Digite el tipo de Beca (completa, prestamo): ");
+        if (tipoBeca == "completa"){
+            boolean tipo = true;
+            SolicitudesBeca nuevaBeca = new SolicitudesBeca(periodo, tipo);
+        }
+        else{
+            boolean tipo = false;
+            SolicitudesBeca nuevaBeca = new SolicitudesBeca(periodo, tipo);
+        }
+    }
+
 }
