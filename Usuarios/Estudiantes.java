@@ -36,12 +36,12 @@ public class Estudiantes {
      * @param gen    (boolean) género
      * @param lPro   (String) Lugar de procedencia
      */
-    public Estudiantes(String nom, String car, Date nac, short edad, boolean gen, String lPro) {
+    public Estudiantes(String nom, String car, Date nac, short edad, String gen, String lPro) {
         this.nombre = nom;
         this.carnet = car;
         this.nacimiento = nac;
         this.edad = edad;
-        this.genero = gen;
+        setGenero(gen);
         this.lugarProcedencia = lPro;
     }
 
@@ -172,5 +172,11 @@ public class Estudiantes {
 
     public void setCursos(Cursos curso) {
         this.cursos.add(curso);
+    }
+
+    @Override
+    public String toString() {
+        String respuesta = (this.nombre + ": " + this.carnet);
+        return respuesta;
     }
 }

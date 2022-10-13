@@ -13,12 +13,12 @@ public class Tutoria {
     /**
      * Contructor de la clase grupo
      * 
-     * @param s (String)
-     * @param a (String)
+     * @param semana (String)
+     * @param asistencia (String)
      */
-    public Tutoria(short s, short a) {
-        this.sesion = s;
-        this.asistencia = a;
+    public Tutoria(short semana, short asistencia) {
+        this.sesion = semana;
+        this.asistencia = asistencia;
     }
 
     public short getSesion() {
@@ -35,5 +35,11 @@ public class Tutoria {
 
     public void setAsistencia(short asistencia) {
         this.asistencia = asistencia;
+    }
+
+    @Override
+    public String toString() {
+        String respuesta = ("\nSemana " + this.sesion + "\nAsistencia: " + this.asistencia);
+        return respuesta;
     }
 }

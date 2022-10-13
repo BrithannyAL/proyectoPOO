@@ -94,6 +94,42 @@ public class Coordinador extends Usuarios {
         return usuarios;
     }
 
+    public Estudiantes crearEstudiante() {
+        System.out.println("Escriba todo los solicitadi para crear el nuevo estudiante:");
+        System.out.println("===========================================================");
+        Console console = System.console();
+        String nombre = console.readLine("Escriba el nombre completo: ");
+        String Carnet = console.readLine("Digite el carnet: ");
+        System.out.println("Digite la fecha en formato (YY-MM-DD)");
+        Date nacimiento = metodos.obtenerFecha(console.readLine("Fecha de nacimiento: "));
+        short edad = Short.parseShort(console.readLine("Digite la edad del estudiante: "));
+        String genero = console.readLine("Genero (Famenino/Masculino): ");
+        String lugarProcedencia = console.readLine("Escriba el lugar donde vive el estudiante: ");
+        return new Estudiantes(nombre, Carnet, nacimiento, edad, genero, lugarProcedencia);
+    }
+
+    public ArrayList<Estudiantes> actualizarEstudiantes(ArrayList<Estudiantes> estudiantes) {
+        for (Estudiantes e: estudiantes) {
+            e.toString();
+        }
+        Console console = System.console();
+        String carnet = console.readLine("Digitel el carnet del estudiante que desea actualizar");
+        for (Estudiantes e: estudiantes) {
+            if (e.getCarnet().equals(carnet)) {
+                int opcion = Integer.parseInt(console.readLine("¿Desea actualizar la edad del estudiante? (1. Sí / 2. No)"));
+                if (opcion == 1) {
+                    e.setEdad(Short.parseShort(console.readLine("Digite la nueva edad del estudiante: ")));
+                }
+
+                opcion = Integer.parseInt(console.readLine("¿Desea actualizar el lugar donde vive? (1. Sí / 2. No)"));
+                if (opcion == 1) {
+                    e.setLugarProcedencia(console.readLine("Digite el lugar donde vive: "));
+                }
+            }
+        }
+        return estudiantes;
+    }
+
     public static String[] obtenerLista(String elemento) {
         Console console = System.console();
         String[] lista = {};
@@ -335,22 +371,22 @@ public class Coordinador extends Usuarios {
     public ArrayList<Estudiantes> asociarEstudianteCurso(ArrayList<Estudiantes> estudiantes, ArrayList<Cursos> cursos) {
         Console console = System.console();
         Estudiantes encontrado = null;
-        String estudiante = console.readLine("Carnet del estudiante al que se le va a asociar el curso: ");
+        String estudiante = console.readLine("Carnet del estudiante que va a matricular el curso: ");
         for (Estudiantes e: estudiantes) {
             if (e.getCarnet().equals(estudiante)) {
                 encontrado = e;
                 for (Cursos c: cursos) {
                     c.toString();
                 }
-                String codigo = console.readLine("Digitel el código del curso que desea asociar: ");
+                String codigo = console.readLine("Digitel el código del curso que desea matricular: ");
                 Cursos cursoAsociar = metodos.buscarCursos(cursos, codigo);
                 e.setCursos(cursoAsociar);
-                System.out.println("-EL CURSO SE HA ASOCIADO CORRECTAMENTE-");
+                System.out.println("-EL ESTUDIANTE SE MATRICULÓ CORRECTAMENTE-");
                 return estudiantes;
             }
         }
         if (encontrado == null) {
-            System.out.println("-EL ESTUDIANTE NO SE ENCUENTRA REGISTRADO-");
+            System.out.println("ATENCIÓN: EL ESTUDIANTE NO SE ENCUENTRA REGISTRADO");
         }
         return estudiantes;
     }

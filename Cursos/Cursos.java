@@ -1,7 +1,7 @@
 package Cursos;
 
 import java.util.ArrayList;
-import Clases.*;
+import Usuarios.Estudiantes;
 
 /**
  * Describe los cursos del sistema para gestión de registros académicos del TEC
@@ -18,7 +18,7 @@ abstract public class Cursos {
     protected short horasLectivas; // Cantidad de horas de clase
     protected String[] requisitos; // Cursos que se deben aprobar primero
     protected String[] corequisitos; // Cursos a llevar en el mismo semestre
-    protected ArrayList<Grupos> grupos; //Lista de grupos que lo cursan
+    protected ArrayList<Estudiantes> estudiantesMatriuclados; 
 
     /**
      * Constructutor para la creación de instansias de la clase cursos
