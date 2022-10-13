@@ -404,7 +404,7 @@ public class Coordinador extends Usuarios {
         return estudiantes;
     }
 
-    public Tramites CrearTramite (ArrayList<Estudiantes> estudiantes, ArrayList<Cursos> cursos, ArrayList<Tramites> tramites){
+    public Tramites CrearTramite (ArrayList<Estudiantes> estudiantes, ArrayList<Cursos> cursos){
         Console console = System.console();
         int tipoTram = 0;
         String carnetEstudiante = console.readLine("Carne de estudiante asiciado: ");
@@ -489,5 +489,4 @@ public class Coordinador extends Usuarios {
             return nuevaBeca;
         }
     }
-
 }
