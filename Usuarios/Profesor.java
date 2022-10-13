@@ -1,6 +1,7 @@
 package Usuarios;
 
 import java.io.Console;
+import java.sql.Date;
 import java.util.ArrayList;
 import Clases.*;
 
@@ -13,6 +14,7 @@ import Clases.*;
 public class Profesor extends Usuarios {
 
     private ArrayList<Tutoria> tutorias;
+    private ArrayList<Acompañamientos> acompañamientos;
     private ArrayList<Grupos> grupos;
 
     /**
@@ -44,6 +46,14 @@ public class Profesor extends Usuarios {
         this.grupos.add(grupo);
     }
 
+    public ArrayList<Acompañamientos> getAcompañamientos() {
+        return acompañamientos;
+    }
+
+    public void setAcompañamientos(ArrayList<Acompañamientos> acompañamientos) {
+        this.acompañamientos = acompañamientos;
+    }
+
     public void ingresarTutoria() {
         Console console = System.console();
         int semana = Integer.parseInt(console.readLine("Ingrese la semana en la que se lleva a cabo la tutoría: "));
@@ -57,5 +67,20 @@ public class Profesor extends Usuarios {
 
     public void asignarCalificacion(String e, String n, Profesor p) {
         //
+    }
+
+    public void ingresarAcompañamiento(ArrayList<Estudiantes> estudiantes){
+        Console console = System.console();
+        String fecha = console.readLine("Ingrese la fecha en la que se realiza el acompañamiento(DD-MM-YY): ");
+        String tipo = console.readLine("Ingrese el tipo de reporte: ");
+        String nota = console.readLine("Ingrese una nota descriptiva acerca del caso en cuestión: ");
+        for (Estudiantes e : estudiantes)
+        System.out.println(e);
+        String est = console.readLine("Ingrese el carnet del estudiante a asociar: ");
+        Estudiantes estudiante = Estudiantes.buscarEstudiante(estudiantes,est);
+        if(estudiante != null){
+           acompañamientos.add(new Acompañamientos(fecha,tipo,estudiante,nota));
+        }
+
     }
 }

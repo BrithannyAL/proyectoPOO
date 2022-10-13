@@ -179,4 +179,14 @@ public class Estudiantes {
         String respuesta = (this.nombre + ": " + this.carnet);
         return respuesta;
     }
+
+
+    public static Estudiantes buscarEstudiante(ArrayList<Estudiantes> estudiantes, String carnet) {
+        for (Estudiantes e : estudiantes) {
+            if (e.getCarnet().equals(carnet)) {
+                return e;
+            }
+        }
+        return null;
+    }
 }

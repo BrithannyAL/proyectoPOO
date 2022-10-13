@@ -84,6 +84,9 @@ public class Main {
                     case 2:
                         profesorLog.ingresarTutoria();
                         break;
+                    case 3:
+                        profesorLog.ingresarAcompañamiento(estudiantes);
+                        break;
                     case 0:
                         System.exit(ejecucion); 
                 
@@ -136,12 +139,13 @@ public class Main {
             System.out.println("||              Bienvenido al menú de profesores!                   ||");
             System.out.println("||              [1] Para asignar una calificación                   ||");
             System.out.println("||              [2] Para agregar una tutoria                        ||");
+            System.out.println("||              [3] Para ingresar un acompañamiento                 ||");
             System.out.println("||              [0] Para salir                                      ||");
             System.out.println("======================================================================");
 
             op = Integer.parseInt(console.readLine("Escriba la opción que desea ejecutar: "));
 
-            if ((0 <= op) && (op <= 2)) {
+            if ((0 <= op) && (op <= 3)) {
                 inicio = false;
             } else {
                 System.out.println("OPCIÓN INVÁLIDA: INTENTE DE NUEVO");

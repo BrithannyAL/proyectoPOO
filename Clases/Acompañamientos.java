@@ -16,7 +16,7 @@ public class Acompañamientos {
     /**
      * Atrinbutos
      */
-    private Date fecha; // Fecha en la que se realiza el acompanamiento
+    private String fecha; // Fecha en la que se realiza el acompanamiento
     private String tipoReporte; // Tipo de reporte realizado
     private ArrayList<Estudiantes> estudiantes; // Estudiantes que usaron el acompanamiento
     private String notaDescriptiva; // Nota que describe el acompanamiento
@@ -28,7 +28,7 @@ public class Acompañamientos {
      * @param tr (String)
      * @param nd (String)
      */
-    public Acompañamientos(Date f, String tr, String nd) {
+    public Acompañamientos(String f, String tr, Estudiantes est,String nd) {
         this.fecha = f;
         this.tipoReporte = tr;
         this.notaDescriptiva = nd;
@@ -39,7 +39,7 @@ public class Acompañamientos {
      * 
      * @return
      */
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
@@ -48,7 +48,7 @@ public class Acompañamientos {
      * 
      * @param fecha
      */
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
