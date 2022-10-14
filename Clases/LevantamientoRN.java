@@ -6,21 +6,21 @@
  */
 package Clases;
 import Cursos.Cursos;
+import Usuarios.Estudiantes;
+import java.sql.Date;
 
-public class LevantamientoRN {
+
+public class LevantamientoRN extends Tramites{
     /**
     * Atributos
     */
     private Cursos cursos_asociados;
     private Cursos curso_a_matricular;
     private boolean estado;
-    /**
-     * Constructor de la clase LevantamientoRN
-     * @param ca (Curso asociado a levantar)
-     * @param cm (Curso a matricular)
-     * @param e (estado de levantamiento)
-     */
-    public LevantamientoRN(Cursos ca, Cursos cm, boolean e){
+
+    public LevantamientoRN(Estudiantes estAso, String descrip, Date fechRegis, 
+    Cursos ca, Cursos cm, boolean e){
+        super(estAso, descrip, fechRegis);
         this.cursos_asociados = ca;
         this.curso_a_matricular = cm;
         this.estado = e;
