@@ -9,13 +9,13 @@ import Usuarios.*;
 import java.util.Date;
 
 
-public class Tramites {
+abstract class Tramites {
     /**
      * Atributos
      */
-    private Estudiantes estudiante_asociado;
-    private String descripcion;
-    private Date fecha_registro;
+    protected Estudiantes estudiante_asociado;
+    protected String descripcion;
+    protected Date fecha_registro;
     /**
      * Constructor de la clase Tramites
      * @param e (Estudiantes)
@@ -70,5 +70,4 @@ public class Tramites {
         this.fecha_registro = fecha_registro;
     }
 }
-
 
