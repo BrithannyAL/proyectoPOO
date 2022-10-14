@@ -6,8 +6,29 @@ import Cursos.*;
 import Usuarios.*;
 
 public class datos {
+
+    public static ArrayList<Cursos> cargarCursos() {
+        ArrayList<Cursos> cursos = new ArrayList<>();
+
+        cursos.add(new Virtual(
+                "IC1400", "Fundamentos de organización de computadoras", (short) 3, (short) 4,
+                null, null, new String[] { "Miércoles" }, "1:30 PM", "4:05 PM"));
+        cursos.add(new VirtualAsincronico(
+                "MA1403", "Matemática discreta", (short) 4, (short) 4,
+                null, null, "TecDigital"));
+        cursos.add(new VirtualSincronico(
+            "IC2101", "Programación orientada a objetos", (short) 3, (short) 9,
+                new String[] { "Introducción a la programación", "Taller de programación" },
+                null, new String[] { "Lunes" }, "7:55 AM", "11:30 AM", "ZOOM"));
+
+        return cursos;
+    }
     
     public static ArrayList<Estudiantes> cargarEstudiantes() {
+
+        ArrayList<Cursos> cursos = new ArrayList<>();
+        cursos = cargarCursos();
+
         ArrayList<Estudiantes> estudiantes = new ArrayList<>();
 
         estudiantes.add(new Estudiantes("Veronica", "1", metodos.obtenerFecha("2003-4-12"),
@@ -20,6 +41,10 @@ public class datos {
                 (short) 19, "Femenino", "Florencia"));
         estudiantes.add(new Estudiantes("Angel", "5", metodos.obtenerFecha("2003-7-23"),
                 (short) 19, "Masculino", "CQ"));
+
+        estudiantes.get(0).setCalificaciones(cursos.get(0), 78);
+        estudiantes.get(0).setCalificaciones(cursos.get(1), 90);
+        estudiantes.get(0).setCalificaciones(cursos.get(2), 87);
 
         return estudiantes;
     }
@@ -45,23 +70,6 @@ public class datos {
         profesores.add(new Profesor("F", new String[] { "123", "456" }, "F@", "f", "123"));
 
         return profesores;
-    }
-
-    public static ArrayList<Cursos> cargarCursos() {
-        ArrayList<Cursos> cursos = new ArrayList<>();
-
-        cursos.add(new Virtual(
-                "IC1400", "Fundamentos de organización de computadoras", (short) 3, (short) 4,
-                null, null, new String[] { "Miércoles" }, "1:30 PM", "4:05 PM"));
-        cursos.add(new VirtualAsincronico(
-                "MA1403", "Matemática discreta", (short) 4, (short) 4,
-                null, null, "TecDigital"));
-        cursos.add(new VirtualSincronico(
-            "IC2101", "Programación orientada a objetos", (short) 3, (short) 9,
-                new String[] { "Introducción a la programación", "Taller de programación" },
-                null, new String[] { "Lunes" }, "7:55 AM", "11:30 AM", "ZOOM"));
-
-        return cursos;
     }
 
     public static ArrayList<Grupos> cargarGrupos() {
