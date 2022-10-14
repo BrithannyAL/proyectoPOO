@@ -96,6 +96,8 @@ public class Main {
                         case 3:
                             profesorLog.ingresarAcompañamiento(estudiantes);
                             break;
+                        case 4:
+                            menuReportesProfesor(profesorLog);
                         case 0:
                             System.exit(ejecucion);
                     }
@@ -138,7 +140,7 @@ public class Main {
         return respuesta;
     }
 
-    public static byte imprimirMenuReportesCordinador() {
+    public static byte imprimirMenuReportesCoordinador() {
         boolean inicio = true;
         byte respuesta = 0;
         Console console = System.console();
@@ -163,7 +165,42 @@ public class Main {
     }
 
     public static void menuReportesCoordinador(Coordinador coordinadorLog) {
-        byte ejecucion = imprimirMenuReportesCordinador();
+        byte ejecucion = imprimirMenuReportesCoordinador();
+        boolean inicio = true;
+        while (inicio == true) {
+            switch (ejecucion) {
+                case 0:
+                    inicio = false;
+                    break;
+            }
+        }
+    }
+
+    public static byte imprimirMenuReportesProfesor() {
+        boolean inicio = true;
+        byte respuesta = 0;
+        Console console = System.console();
+        while (inicio) {
+            System.out.println("======================================================================");
+            System.out.println("||         Bienvenido al menú de reportes!                          ||");
+            System.out.println("||         [1] Reporte de RN                                        ||");
+            System.out.println("||         [2] Reporte de levantamiento de requisitos               ||");
+            System.out.println("||         [0] Para salir                                           ||");
+            System.out.println("======================================================================");
+
+            respuesta = Byte.parseByte(console.readLine("Escriba la opción que desea ejecutar: "));
+
+            if ((0 <= respuesta) && (respuesta <= 2)) {
+                inicio = false;
+            } else {
+                System.out.println("OPCIÓN INVÁLIDA: INTENTE DE NUEVO");
+            }
+        }
+        return respuesta;
+    }
+
+    public static void menuReportesProfesor(Profesor profesorLog) {
+        byte ejecucion = imprimirMenuReportesProfesor();
         boolean inicio = true;
         while (inicio == true) {
             switch (ejecucion) {
@@ -184,6 +221,7 @@ public class Main {
             System.out.println("||              [1] Para asignar una calificación                   ||");
             System.out.println("||              [2] Para agregar una tutoria                        ||");
             System.out.println("||              [3] Para ingresar un acompañamiento                 ||");
+            System.out.println("||              [3] Menú de reportes                                ||");
             System.out.println("||              [0] Para salir                                      ||");
             System.out.println("======================================================================");
 

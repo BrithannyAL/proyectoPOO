@@ -134,7 +134,7 @@ public class Coordinador extends Usuarios {
         return estudiantes;
     }
 
-    public static String[] obtenerLista(String elemento) {
+    private static String[] obtenerLista(String elemento) {
         Console console = System.console();
         String[] lista = {};
         boolean inicio = true;
