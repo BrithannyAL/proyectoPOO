@@ -4,7 +4,6 @@ package Usuarios;
  * Importaciones externas.
  */
 import java.io.Console;
-import java.lang.reflect.Array;
 import java.util.Date;
 import java.util.ArrayList;
 
@@ -417,7 +416,7 @@ public class Coordinador extends Usuarios {
         Tramites nuevoTramite = new Tramites(estud, descripcion, fechaRegistro);
         return nuevoTramite;
 
-        System.out.println("[1] Levantamiento de Requisitos");
+        /*System.out.println("[1] Levantamiento de Requisitos");
         System.out.println("[2] Levantamientos de RN");
         System.out.println("[3] Solicitudes de becas");
 
@@ -434,7 +433,7 @@ public class Coordinador extends Usuarios {
             }
             else{
                 System.out.println("OPCIÓN INVÁLIDA: INTENTE DE NUEVO");
-            }
+            }*/
     }
 
     public LevantamientoRequisitos crearLevantamientoRequ(ArrayList<Cursos> cursos){

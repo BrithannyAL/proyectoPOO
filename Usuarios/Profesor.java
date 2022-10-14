@@ -3,6 +3,7 @@ package Usuarios;
 import java.io.Console;
 import java.util.ArrayList;
 import Clases.*;
+import Cursos.Cursos;
 
 /**
  * Clase que describe a los usuarios de tipo Profesor
@@ -55,9 +56,6 @@ public class Profesor extends Usuarios {
         this.acompañamientos = acompañamientos;
     }
 
-
- 
-
     public void ingresarTutoria() {
         Console console = System.console();
         int semana = Integer.parseInt(console.readLine("Ingrese la semana en la que se lleva a cabo la tutoría: "));
@@ -70,12 +68,24 @@ public class Profesor extends Usuarios {
 
     }
 
-    public void asignarCalificacion(String e, String n, Profesor p) {
-        //
+    public ArrayList<Estudiantes> asignarCalificacion(ArrayList<Estudiantes> estudiantes) {
+        estudiantes.get(0).imprimirLista(estudiantes);
+        Console console = System.console();
+        String estudiante = console.readLine("Escriba el carnet del estudiante al que se le asignará la nota: ");
+        for (Estudiantes e: estudiantes) {
+            if (e.getCarnet().equals(estudiante)) {
+                e.verListaCursos();
+                String codigo = console.readLine("Escriba el código del curso en donde lleva la nota: ");
+                for (Cursos c: e.getCursos()) {
+                    if (c.getCodigo().equals(codigo)) {
+                        int nota = Integer.parseInt(console.readLine("Escriba la nota asignada: "));
+                        e.setCalificaciones(c, nota);
+                    }
+                }
+            }
+        }
+        return estudiantes;
     }
-
-
-
 
     public void ingresarAcompañamiento(ArrayList<Estudiantes> estudiantes){
         Console console = System.console();
@@ -85,13 +95,9 @@ public class Profesor extends Usuarios {
         for (Estudiantes e : estudiantes)
         System.out.println(e);
         String est = console.readLine("Ingrese el carnet del estudiante a asociar: ");
-        Estudiantes estudiante = Estudiantes.buscarEstudiante(estudiantes,est);
+        Estudiantes estudiante = metodos.buscarEstudiante(estudiantes,est);
         if(estudiante != null){
             this.acompañamientos.add(new Acompañamientos(fecha,tipo,estudiante,nota));
-
-            
         }
-
-
     }
 }

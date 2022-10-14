@@ -1,3 +1,4 @@
+
 /**
  * Importaciones externas al archivo
  */
@@ -15,7 +16,7 @@ import java.io.Console;
 public class Main {
     public static void main(String[] args) {
 
-        //CARGAR DATOS
+        // CARGAR DATOS
         ArrayList<Estudiantes> estudiantes = datos.cargarEstudiantes();
         ArrayList<Usuarios> usuarios = datos.cargarUsuarios();
         ArrayList<Profesor> profesores = datos.cargarProfesores();
@@ -30,79 +31,78 @@ public class Main {
             if (usuarioLog.getClass() == Coordinador.class) {
                 Coordinador coordinadorlog = (Coordinador) usuarioLog;
 
-                while(true){
-                byte ejecucion = (byte) menuDeCordinadores();
-                switch (ejecucion) {
-                    case 1:
-                        Usuarios u = coordinadorlog.crearUsuario();
-                        if (u != null)
-                            usuarios.add(u);
-                        break;
-                    case 2:
-                        usuarios = coordinadorlog.editarUsuario(usuarios);
-                        break;
-                    case 3:
-                        Estudiantes e = coordinadorlog.crearEstudiante();
-                        if (e != null) {
-                            estudiantes.add(e);
-                        }
-                        break;
-                    case 4:
-                        estudiantes = coordinadorlog.actualizarEstudiantes(estudiantes);
-                        break;
-                    case 5:
-                        Cursos c = coordinadorlog.agregarCurso();
-                        if (c != null)
-                            cursos.add(c);
-                        break;
-                    case 6:
-                        cursos = coordinadorlog.editarCurso(cursos);
-                        break;
-                    case 7:
-                        Grupos g = coordinadorlog.crearGrupo(profesores);
-                        if (g != null)
-                            grupos.add(g);
-                        break;
-                    case 8:
-                        grupos = coordinadorlog.editarGrupo(grupos, profesores);
-                        break;
-                    case 9:
-                        estudiantes = coordinadorlog.asociarEstudianteCurso(estudiantes, cursos);
-                        break;
-                    case 10:
-                        Tramites t = coordinadorlog.CrearTramite(estudiantes, cursos);
-                        if (t != null)
-                            tramites.add(t);
-                        break;
-                    case 0:
-                        System.exit(ejecucion);
-                        break;
-                    default:
-                        System.out.println("ATENCIÓN: La opción que ha digitado es invalida para el menú.");
-                        break;
+                while (true) {
+                    byte ejecucion = (byte) menuDeCordinadores();
+                    switch (ejecucion) {
+                        case 1:
+                            Usuarios u = coordinadorlog.crearUsuario();
+                            if (u != null)
+                                usuarios.add(u);
+                            break;
+                        case 2:
+                            usuarios = coordinadorlog.editarUsuario(usuarios);
+                            break;
+                        case 3:
+                            Estudiantes e = coordinadorlog.crearEstudiante();
+                            if (e != null) {
+                                estudiantes.add(e);
+                            }
+                            break;
+                        case 4:
+                            estudiantes = coordinadorlog.actualizarEstudiantes(estudiantes);
+                            break;
+                        case 5:
+                            Cursos c = coordinadorlog.agregarCurso();
+                            if (c != null)
+                                cursos.add(c);
+                            break;
+                        case 6:
+                            cursos = coordinadorlog.editarCurso(cursos);
+                            break;
+                        case 7:
+                            Grupos g = coordinadorlog.crearGrupo(profesores);
+                            if (g != null)
+                                grupos.add(g);
+                            break;
+                        case 8:
+                            grupos = coordinadorlog.editarGrupo(grupos, profesores);
+                            break;
+                        case 9:
+                            estudiantes = coordinadorlog.asociarEstudianteCurso(estudiantes, cursos);
+                            break;
+                        case 10:
+                            Tramites t = coordinadorlog.CrearTramite(estudiantes, cursos);
+                            if (t != null)
+                                tramites.add(t);
+                            break;
+                        case 11:
+                            menuReportesCoordinador(coordinadorlog);
+                            break;
+                        case 0:
+                            System.exit(ejecucion);
+                            break;
                     }
                 }
             } else if (usuarioLog.getClass() == Profesor.class) {
                 Profesor profesorLog = (Profesor) usuarioLog;
-                while(true){
-                byte ejecucion = (byte) menuDeProfesores();
-                switch (ejecucion) {
-                    case 2:
-                        profesorLog.ingresarTutoria();
-                        break;
-                    case 3:
-                        profesorLog.ingresarAcompañamiento(estudiantes);
-                        break;
-                    case 0:
-                        System.exit(ejecucion); 
-                
-                    default:
-                        break;
-                }}
+                while (true) {
+                    byte ejecucion = (byte) menuDeProfesores();
+                    switch (ejecucion) {
+                        case 1:
+                            profesorLog.asignarCalificacion(estudiantes);
+                        case 2:
+                            profesorLog.ingresarTutoria();
+                            break;
+                        case 3:
+                            profesorLog.ingresarAcompañamiento(estudiantes);
+                            break;
+                        case 0:
+                            System.exit(ejecucion);
+                    }
+                }
             } else {
                 System.out.println("ATENCIÓN: USUARIO NO ENCONTRADO");
             }
-            
         }
     }
 
@@ -123,18 +123,55 @@ public class Main {
             System.out.println("||         [8] Editar un grupo                                      ||");
             System.out.println("||         [9] Matricular estudiante a un curso                     ||");
             System.out.println("||         [10] Registrar un nuevo tramite                          ||");
+            System.out.println("||         [11] Menú de reportes                                    ||");
             System.out.println("||         [0] Para salir                                           ||");
             System.out.println("======================================================================");
 
             respuesta = Integer.parseInt(console.readLine("Escriba la opción que desea ejecutar: "));
 
-            if ((0 <= respuesta) && (respuesta <= 9)) {
+            if ((0 <= respuesta) && (respuesta <= 11)) {
                 inicio = false;
             } else {
                 System.out.println("OPCIÓN INVÁLIDA: INTENTE DE NUEVO");
             }
         }
         return respuesta;
+    }
+
+    public static byte imprimirMenuReportesCordinador() {
+        boolean inicio = true;
+        byte respuesta = 0;
+        Console console = System.console();
+        while (inicio) {
+            System.out.println("======================================================================");
+            System.out.println("||         Bienvenido al menú de reportes!                          ||");
+            System.out.println("||         [1] Historial académico                                  ||");
+            System.out.println("||         [2] Reporte de RN                                        ||");
+            System.out.println("||         [3] Reporte de levantamiento de requisitos               ||");
+            System.out.println("||         [0] Para salir                                           ||");
+            System.out.println("======================================================================");
+
+            respuesta = Byte.parseByte(console.readLine("Escriba la opción que desea ejecutar: "));
+
+            if ((0 <= respuesta) && (respuesta <= 3)) {
+                inicio = false;
+            } else {
+                System.out.println("OPCIÓN INVÁLIDA: INTENTE DE NUEVO");
+            }
+        }
+        return respuesta;
+    }
+
+    public static void menuReportesCoordinador(Coordinador coordinadorLog) {
+        byte ejecucion = imprimirMenuReportesCordinador();
+        boolean inicio = true;
+        while (inicio == true) {
+            switch (ejecucion) {
+                case 0:
+                    inicio = false;
+                    break;
+            }
+        }
     }
 
     public static int menuDeProfesores() { // Menu con las opciones de un profesor

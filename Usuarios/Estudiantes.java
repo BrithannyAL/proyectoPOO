@@ -6,6 +6,7 @@ package Usuarios;
 import java.util.ArrayList;
 import java.util.Date;
 
+import Clases.Calificacion;
 import Cursos.*;
 
 /**
@@ -24,7 +25,8 @@ public class Estudiantes {
     private short edad; // Edad del estudiante
     private boolean genero; // Genero del estudiante (true/femenino y false/masculino)
     private String lugarProcedencia; // Lugar donde vive el estudiante
-    private ArrayList<Cursos> cursos; //Lista de cursos que matriculó
+    private ArrayList<Cursos> cursos;
+    private ArrayList<Calificacion> calificaciones; //Lista de cursos que matriculó
 
     /**
      * Contructor de la clase estudiantes
@@ -174,19 +176,30 @@ public class Estudiantes {
         this.cursos.add(curso);
     }
 
+    public ArrayList<Calificacion> getCalificaciones() {
+        return calificaciones;
+    }
+
+    public void setCalificaciones(Cursos curso, int nota) {
+        Calificacion calificacion = new Calificacion(curso, nota);
+        this.calificaciones.add(calificacion);
+    }
+
     @Override
     public String toString() {
         String respuesta = (this.nombre + ": " + this.carnet);
         return respuesta;
     }
 
-
-    public static Estudiantes buscarEstudiante(ArrayList<Estudiantes> estudiantes, String carnet) {
-        for (Estudiantes e : estudiantes) {
-            if (e.getCarnet().equals(carnet)) {
-                return e;
-            }
+    public void verListaCursos() {
+        for (Cursos c: this.cursos) {
+            c.toString();
         }
-        return null;
+    }
+
+    public void imprimirLista(ArrayList<Estudiantes> estudiantes) {
+        for (Estudiantes e: estudiantes) {
+            e.toString();
+        }
     }
 }
