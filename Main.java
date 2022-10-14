@@ -80,9 +80,8 @@ public class Main {
                             estudiantes = coordinadorlog.asociarEstudianteCurso(estudiantes, cursos);
                             break;
                         case 10:
-                            Tramites t = coordinadorlog.CrearTramite(estudiantes, cursos);
-                            if (t != null)
-                                tramites.add(t);
+                            menuReportesCoordinador(coordinadorlog);
+                            break;
                             break;
                         case 11:
                             menuReportesCoordinador(coordinadorlog);
@@ -133,14 +132,15 @@ public class Main {
             System.out.println("||         [7] Crear un grupo                                       ||");
             System.out.println("||         [8] Editar un grupo                                      ||");
             System.out.println("||         [9] Matricular estudiante a un curso                     ||");
-            System.out.println("||         [10] Registrar un nuevo tramite                          ||");
-            System.out.println("||         [11] Menú de reportes                                    ||");
+            System.out.println("||         [10] Menú de reportes                                    ||");
+            System.out.println("||         [11] Registrar un nuevo levantamiento de requisitos      ||");
+            System.out.println("||         [12] Registrar un nuevo levantamiento RN                 ||");
+            System.out.println("||         [13] Registrar una nueva solicitud de beca               ||");
             System.out.println("||         [0] Para salir                                           ||");
             System.out.println("======================================================================");
-
             respuesta = Integer.parseInt(console.readLine("Escriba la opción que desea ejecutar: "));
 
-            if ((0 <= respuesta) && (respuesta <= 11)) {
+            if ((0 <= respuesta) && (respuesta <= 13)) {
                 inicio = false;
             } else {
                 System.out.println("OPCIÓN INVÁLIDA: INTENTE DE NUEVO");
