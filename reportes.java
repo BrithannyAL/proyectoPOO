@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import Clases.Calificacion;
 import Usuarios.*;
 
+
+//Clase desarrollar para realizar los reportes de los profesores y coordinadores
 public class reportes {
     
     public static void historialAcademico(ArrayList<Estudiantes> estudiantes) {

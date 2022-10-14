@@ -2,6 +2,8 @@ package Clases;
 
 import Cursos.Cursos;
 
+
+//Clase creada para asignar califiación a los estudiantes por medio de profesores
 public class Calificacion {
     private int nota;
     private Cursos curso;
