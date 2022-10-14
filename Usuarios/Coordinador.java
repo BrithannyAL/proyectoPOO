@@ -11,7 +11,6 @@ import Clases.Grupos;
 import Clases.LevantamientoRN;
 import Clases.LevantamientoRequisitos;
 import Clases.SolicitudesBeca;
-import Clases.Tramites;
 import Cursos.*;
 
 /**
