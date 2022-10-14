@@ -82,7 +82,6 @@ public class Main {
                         case 10:
                             menuReportesCoordinador(coordinadorlog);
                             break;
-                            break;
                         case 11:
                             menuReportesCoordinador(coordinadorlog);
                             break;
