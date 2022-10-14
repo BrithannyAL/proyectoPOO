@@ -6,6 +6,11 @@ public class Calificacion {
     private int nota;
     private Cursos curso;
 
+    public Calificacion(int n, Cursos c){
+        this.nota = n;
+        this.curso = c;
+    }
+
     public int getNota() {
         return nota;
     }
