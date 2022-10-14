@@ -3,19 +3,22 @@
  * @author Brithanny Arguello, Steven Chacón y Jorge González
  */
 package Clases;
+import Usuarios.Estudiantes;
+import java.sql.Date;
 
-public class SolicitudesBeca {
+
+
+public class SolicitudesBeca extends Tramites {
     /**
      * Atributos
      */
     private String periodo;
     private boolean tipo;
-    /**
-     * Constructor de la clase SolicitudesBeca
-     * @param p (periodo de la beca)
-     * @param t (tipo de beca: total o prestamo)
-     */
-    public SolicitudesBeca(String p, boolean t){
+    
+
+    public SolicitudesBeca(Estudiantes estAso, String descrip, Date fechRegis, 
+    String p, boolean t){
+        super(estAso, descrip, fechRegis);
         this.periodo = p;
         this.tipo = t;
     }
