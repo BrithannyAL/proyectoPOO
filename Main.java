@@ -25,8 +25,17 @@ public class Main {
         ArrayList<Tramites> tramites = datos.cargarTramites();
 
         // Procedimiento para iniciar sesión.
+        boolean x = false;
+        while (x == false){
         String datos[] = obtenerUsuarioContra();
         Usuarios usuarioLog = Usuarios.validadUsuario(usuarios, datos[0], datos[1]);
+
+
+        if(usuarioLog == null){
+            System.out.println("USUARIO O CONTRASENA INCORRECTOS");
+        
+        }else{x = true;}
+
         if (usuarioLog != null) {
             if (usuarioLog.getClass() == Coordinador.class) {
                 Coordinador coordinadorlog = (Coordinador) usuarioLog;
@@ -107,7 +116,7 @@ public class Main {
             }
         }
     }
-
+    }
     public static int menuDeCordinadores() {
         boolean inicio = true;
         int respuesta = 0;
