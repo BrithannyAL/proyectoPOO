@@ -181,7 +181,7 @@ public class Estudiantes {
     }
 
     public void setCalificaciones(Cursos curso, int nota) {
-        Calificacion calificacion = new Calificacion(nota,curso );
+        Calificacion calificacion = new Calificacion(curso, nota);
         this.calificaciones.add(calificacion);
     }
 
