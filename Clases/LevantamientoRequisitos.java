@@ -5,9 +5,12 @@
  * Bibliotecas externas
  */
 package Clases;
-import Cursos.Cursos;
+import java.sql.Date;
 
-public class LevantamientoRequisitos {
+import Cursos.Cursos;
+import Usuarios.Estudiantes;
+
+public class LevantamientoRequisitos extends Tramites {
     /**
      * Atributos
      */
@@ -15,18 +18,14 @@ public class LevantamientoRequisitos {
     private String justificacion;
     private boolean estado;
     private String justificacion_de_Rechazo;
-    /**
-     * Constructor de la clase LevantamientoRequisitos
-     * @param cl (curso a levantar)
-     * @param j (justificacion para levantar el requisito)
-     * @param e (estado del levantamiento)
-     * @param jr (justificacion de ser rechazado)
-     */
-    public LevantamientoRequisitos(Cursos cl, String j, boolean e, String jr){
-        this.curso_a_levatar = cl;
-        this.justificacion = j;
-        this.estado = e;
-        this.justificacion_de_Rechazo = jr;
+    
+    public LevantamientoRequisitos(Estudiantes estAso, String descrip, Date fechRegis, 
+    Cursos curLev, String justifi, Boolean estad, String justiRech){
+        super(estAso, descrip, fechRegis);
+        this.curso_a_levatar = curLev;
+        this.justificacion = justifi;
+        this.estado = estad;
+        this.justificacion_de_Rechazo = justiRech;
     }
     /**
      * Devuelve el curso a levantar
