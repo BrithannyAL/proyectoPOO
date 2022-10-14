@@ -117,6 +117,8 @@ public class Main {
         }
     }
     }
+
+    //Menu con las opciones del coordinador, para ingresar a estas se digita el numero de la opción
     public static int menuDeCordinadores() {
         boolean inicio = true;
         int respuesta = 0;
@@ -146,9 +148,10 @@ public class Main {
                 System.out.println("OPCIÓN INVÁLIDA: INTENTE DE NUEVO");
             }
         }
-        return respuesta;
+        return respuesta; //Se retorna el la opcion seleccionada
     }
 
+    //Menú con las opciones disponibles para los profesores, se ingresa el número de la opción 
     public static byte imprimirMenuReportesCoordinador() {
         boolean inicio = true;
         byte respuesta = 0;

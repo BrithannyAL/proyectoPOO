@@ -45,6 +45,7 @@ public class Estudiantes {
         this.edad = edad;
         setGenero(gen);
         this.lugarProcedencia = lPro;
+        this.calificaciones = new ArrayList<>();
     }
 
     /**
@@ -181,7 +182,7 @@ public class Estudiantes {
     }
 
     public void setCalificaciones(Cursos curso, int nota) {
-        Calificacion calificacion = new Calificacion(curso, nota);
+        Calificacion calificacion = new Calificacion(nota, curso);
         this.calificaciones.add(calificacion);
     }
 
